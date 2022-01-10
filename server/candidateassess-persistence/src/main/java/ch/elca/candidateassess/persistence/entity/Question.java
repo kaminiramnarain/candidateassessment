@@ -53,7 +53,7 @@ public class Question extends AuditModel {
     private SkillLevelEnum skillLevel;
 
     @ManyToOne()
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinColumn(name = "skill_id", referencedColumnName = "skill_id", nullable = false)
     private Skill skill;
 
 }

@@ -27,9 +27,6 @@ public class UserQuestionnaireSkillServiceImpl implements UserQuestionnaireSkill
         this.userQuestionnaireSkillMapper = userQuestionnaireSkillMapper;
     }
 
-<<<<<<< HEAD
-
-=======
     @Override
     public void saveUserQuestionnaireSkill(CreateUserQuestionnaireSkillDto createUserQuestionnaireSkillDto) {
         UserQuestionnaire userQuestionnaire = userQuestionnaireRepository.getById(createUserQuestionnaireSkillDto.getUserQuestionnaireId());
@@ -47,6 +44,5 @@ public class UserQuestionnaireSkillServiceImpl implements UserQuestionnaireSkill
             userQuestionnaireSkillRepository.save(userQuestionnaireSkill);
         });
     }
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
 
 }

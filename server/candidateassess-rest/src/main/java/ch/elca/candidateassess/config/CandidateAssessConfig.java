@@ -16,4 +16,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaAuditing
 public class CandidateAssessConfig {
 
+
 }

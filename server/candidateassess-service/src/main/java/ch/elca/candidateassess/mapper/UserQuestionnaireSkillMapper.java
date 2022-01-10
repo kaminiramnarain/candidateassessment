@@ -15,6 +15,4 @@ public interface UserQuestionnaireSkillMapper {
 
     SkillLevelDto mapToSkillLevelDto(UserQuestionnaireSkill userQuestionnaireSkill);
 
-    SkillLevelDto mapToSkillLevelDto(UserQuestionnaireSkill userQuestionnaireSkill);
-
 }

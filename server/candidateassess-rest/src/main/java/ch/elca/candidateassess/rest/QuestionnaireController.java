@@ -41,7 +41,10 @@ public class QuestionnaireController {
         this.questionnaireService.generateQuestionnaire(userQuestionnaireId);
     }
 
-
+    @GetMapping("getData/{userQuestionnaireId}")
+    public QuestionnaireDataDto getQuestionnaireData(@PathVariable UUID userQuestionnaireId) {
+        return this.questionnaireService.getQuestionnaireData(userQuestionnaireId);
+    }
 
     @GetMapping("getQuestionnaire/{userQuestionnaireId}")
     public FilledQuestionnaireDto getQuestionnaire(@PathVariable UUID userQuestionnaireId) {

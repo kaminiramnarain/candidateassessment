@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { AccountTypeEnum } from './shared/model';
-import { OauthService } from './shared/service/oauth/oauth.service';
-import {LocalStorageService} from "angular-2-local-storage";
 
 @Component({
   selector: 'app-root',
@@ -16,37 +14,40 @@ export class AppComponent implements OnInit {
   public name: string = '';
   @ViewChild("sidenav") sidenav !: MatSidenav;
 
-  constructor(private router: Router, public auth: OauthService,  private storage: LocalStorageService,) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.name = this.storage.get('name');
+    this.name = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
   }
 
   public navigateToDashboard(): void {
-    this.storage.get('isLoggedIn') == "true" ?
+    localStorage.getItem("isLoggedIn") == "true" ?
       this.router.navigate(['/dashboard']) :
       this.router.navigate(['/']);
   }
 
   public isHR(): boolean {
-    return this.storage.get('role') == AccountTypeEnum.HR;
+    return localStorage.getItem("accountType") == AccountTypeEnum.HR;
   }
 
   public isReviewer(): boolean {
-    return this.storage.get('role') == AccountTypeEnum.REVIEWER;
+    return localStorage.getItem("accountType") == AccountTypeEnum.REVIEWER;
   }
 
   public isLoggedIn(): boolean {
-    return this.storage.get('isLoggedIn')== "true";
+    return localStorage.getItem("isLoggedIn") == "true";
   }
 
   public logUserOut(): void {
-    this.auth.signOut();
-    this.storage.set("isLoggedIn", "false");
+    localStorage.clear();
+    localStorage.setItem("isLoggedIn", "false");
     this.sidenav.close();
-  
+    this.router.navigate(['/login']);
   }
 
+  public onLoginPage(): boolean {
+    return this.router.url == "/login";
+  }
 
 
 }

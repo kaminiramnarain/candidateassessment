@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { PublicService } from 'src/app/shared/service/api/public/public.service';
+import { UserQuestionnaireService } from 'src/app/shared/service/api/user-questionnaire/user-questionnaire.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class QuestionnaireStartComponent implements OnInit {
 
   public userQuestionnaireId!: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private publicService: PublicService) { 
+  constructor(private router: Router, private route: ActivatedRoute, private userQuestionnaireService: UserQuestionnaireService) { 
     if (!(this.route.snapshot.params['id'] === undefined))
     this.userQuestionnaireId = this.route.snapshot.params['id'];
   }
@@ -24,7 +24,7 @@ export class QuestionnaireStartComponent implements OnInit {
 
   
   public checkId(): void {
-    this.publicService.validateId(this.userQuestionnaireId).subscribe({
+    this.userQuestionnaireService.validateId(this.userQuestionnaireId).subscribe({
       next: () => {
       },
       error: (error) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PublicService } from 'src/app/shared/service/api/public/public.service';
+import { UserQuestionnaireService } from 'src/app/shared/service/api/user-questionnaire/user-questionnaire.service';
 import { MarksDialogComponent } from '../marks-dialog/marks-dialog.component';
 
 @Component({
@@ -13,16 +13,16 @@ export class TestCompletedComponent implements OnInit {
   private marks!: number;
   private candidateId!: string;
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute, private router: Router, private publicService: PublicService) 
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private router: Router, private userQuestionnaireService: UserQuestionnaireService) 
   {this.candidateId = this.route.snapshot.params['id']; }
 
   ngOnInit(): void {
     this.checkId();
-    this.publicService.getMarks(this.route.snapshot.params['id']).subscribe((marks) => this.marks = marks);
+    this.userQuestionnaireService.getMarks(this.route.snapshot.params['id']).subscribe((marks) => this.marks = marks);
   }
   
   public checkId(): void {
-    this.publicService.validateId(this.candidateId).subscribe({
+    this.userQuestionnaireService.validateId(this.candidateId).subscribe({
       next: () => {
       },
       error: (error) => {

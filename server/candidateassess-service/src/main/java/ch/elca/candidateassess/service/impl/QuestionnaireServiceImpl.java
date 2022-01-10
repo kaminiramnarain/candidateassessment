@@ -37,14 +37,9 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     private final UserQuestionnaireSkillMapper userQuestionnaireSkillMapper;
     private final CandidateAnswerRepository candidateAnswerRepository;
     private final UUIDMapper uuidMapper;
-<<<<<<< HEAD
-
-    public QuestionnaireServiceImpl(UserQuestionnaireRepository userQuestionnaireRepository, UUIDMapper uuidMapper, UserQuestionnaireMapper userQuestionnaireMapper, AnswerMapper answerMapper, QuestionnaireQuestionMapper questionnaireQuestionMapper, UserQuestionnaireSkillRepository userQuestionnaireSkillRepository, QuestionRepository questionRepository, QuestionnaireRepository questionnaireRepository, QuestionnaireQuestionRepository questionnaireQuestionRepository, AnswerRepository answerRepository, QuestionnaireMapper questionnaireMapper, UserQuestionnaireSkillMapper userQuestionnaireSkillMapper, CandidateAnswerRepository candidateAnswerRepository) {
-=======
 
     public QuestionnaireServiceImpl(UserQuestionnaireRepository userQuestionnaireRepository, UserQuestionnaireMapper userQuestionnaireMapper, AnswerMapper answerMapper, QuestionnaireQuestionMapper questionnaireQuestionMapper, UserQuestionnaireSkillRepository userQuestionnaireSkillRepository, QuestionRepository questionRepository, QuestionnaireRepository questionnaireRepository, QuestionnaireQuestionRepository questionnaireQuestionRepository, AnswerRepository answerRepository, QuestionnaireMapper questionnaireMapper, UserQuestionnaireSkillMapper userQuestionnaireSkillMapper, CandidateAnswerRepository candidateAnswerRepository, UUIDMapper uuidMapper) {
 
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
         this.userQuestionnaireRepository = userQuestionnaireRepository;
         this.userQuestionnaireSkillRepository = userQuestionnaireSkillRepository;
         this.questionRepository = questionRepository;
@@ -130,8 +125,6 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         var qQuestionnaireQuestion = QQuestionnaireQuestion.questionnaireQuestion;
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         return booleanBuilder.and(qQuestionnaireQuestion.questionnaire.id.eq(questionnaireId));
-<<<<<<< HEAD
-=======
     }
 
     private BooleanBuilder buildIdPredicate(UUID questionnaireId, Integer index) {
@@ -194,31 +187,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         QuestionnaireStatusEnum questionnaireStatus = userQuestionnaireRepository.getById(userQuestionnaireId).getStatus();
         questionnaireDataDto.setQuestionnaireOpen(questionnaireStatus == QuestionnaireStatusEnum.PENDING);
         return questionnaireDataDto;
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
     }
-
-
-
-
-    private BooleanBuilder buildCandidateAnswersPredicate(UUID questionId, UUID userQuestionnaireId) {
-        var qCandidateAnswer = QCandidateAnswer.candidateAnswer;
-        BooleanBuilder booleanBuilder = new BooleanBuilder();
-        return booleanBuilder.and((qCandidateAnswer.question.id.eq(questionId)).and(qCandidateAnswer.userQuestionnaire.id.eq(userQuestionnaireId)));
-    }
-
-    private BooleanBuilder buildCandidateAnswerPredicate(UUID questionId, UUID userQuestionnaireId, UUID answerId) {
-        var qCandidateAnswer = QCandidateAnswer.candidateAnswer;
-        BooleanBuilder booleanBuilder = new BooleanBuilder();
-        return booleanBuilder.and(qCandidateAnswer.question.id.eq(questionId)).and(qCandidateAnswer.userQuestionnaire.id.eq(userQuestionnaireId)).and(qCandidateAnswer.answer.id.eq(answerId));
-    }
-
-    private BooleanBuilder buildAnswerPredicate(UUID questionId) {
-        var qAnswer = QAnswer.answer;
-        BooleanBuilder booleanBuilder = new BooleanBuilder();
-        return booleanBuilder.and((qAnswer.question.id.eq(questionId)));
-    }
-
-
 
     @Override
     public FilledQuestionnaireDto getQuestionnaire(UUID userQuestionnaireId) {
@@ -316,7 +285,3 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         userQuestionnaireRepository.save(userQuestionnaire);
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325

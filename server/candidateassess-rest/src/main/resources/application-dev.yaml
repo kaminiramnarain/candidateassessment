@@ -10,7 +10,3 @@ spring:
 #    password: ElcaInformationTechnology
 #    properties.mail.smtp.auth: true
 #    properties.mail.smtp.starttls.enable: true
-keycloak:
-  principal-attribute: preferred_username
-  public-client: true
-  use-resource-role-mappings: true

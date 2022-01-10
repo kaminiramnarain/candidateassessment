@@ -10,7 +10,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = UUIDMapper.class)
 public interface CandidateMapper {
 
-    @Mapping(target = "questionnaireStatus", source = "status")
     @Mapping(target = "reviewers", ignore = true)
     @Mapping(target = "skills", ignore = true)
     @Mapping(source = "status", target = "questionnaireStatus")

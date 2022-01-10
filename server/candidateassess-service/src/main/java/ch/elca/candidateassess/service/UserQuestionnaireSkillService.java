@@ -4,6 +4,6 @@ import ch.elca.candidateassess.dto.CreateUserQuestionnaireSkillDto;
 
 public interface UserQuestionnaireSkillService {
 
-
+    void saveUserQuestionnaireSkill(CreateUserQuestionnaireSkillDto createUserQuestionnaireSkillDto);
 
 }

@@ -30,7 +30,10 @@ export class QuestionnaireService {
   }
 
 
-
+  public getQuestionnaireData(userQuestionnaireId: string): Observable<Questionnaire> {
+    const url = `${environment.apiUrl}/questionnaires/getData/${userQuestionnaireId}`;
+    return this.http.get<Questionnaire>(url, environment.httpOptions);
+  }
 
   public generateQuestionnaire(userQuestionnaireId: string): Observable<any> {
     const url = `${environment.apiUrl}/questionnaires/generate?userQuestionnaireId=${userQuestionnaireId}`;

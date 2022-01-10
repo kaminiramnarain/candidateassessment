@@ -13,8 +13,8 @@ public interface ReviewService {
 
     void saveReview(CreateReviewDto createReviewDto);
 
-    Page<CandidateReviewDto> getUserQuestionnaireData(Sort sort, Integer pageNumber, Integer pageSize, String personEmail);
+    Page<CandidateReviewDto> getUserQuestionnaireData(Sort sort, Integer pageNumber, Integer pageSize, UUID personId);
 
-    Page<CandidateReviewDto> searchByCandidateName(String candidateName,Sort sort, Integer pageNumber, Integer pageSize, String personEmail);
+    Page<CandidateReviewDto> searchByCandidateName(String candidateName,Sort sort, Integer pageNumber, Integer pageSize, UUID personId);
 }
 

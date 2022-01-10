@@ -27,13 +27,13 @@ export class ReviewService {
     );
   }
 
-  public getUserQuestionnaireData(personEmail: string, sortOrder: string, sortBy: string, pageNumber: number, pageSize: number): Observable<Page<CandidateReviewDto[]>> {
-    const url = `${environment.apiUrl}/reviews/getUserQuestionnaireData/${personEmail}?sortOrder=${sortOrder}&sortBy=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
+  public getUserQuestionnaireData(personId: string, sortOrder: string, sortBy: string, pageNumber: number, pageSize: number): Observable<Page<CandidateReviewDto[]>> {
+    const url = `${environment.apiUrl}/reviews/getUserQuestionnaireData/${personId}?sortOrder=${sortOrder}&sortBy=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
     return this.http.get<Page<CandidateReviewDto[]>>(url, httpOptions);
   }
 
-  public searchByCandidateName(candidateName: string, sortOrder: string, sortBy: string, pageNumber: number, pageSize: number, personEmail: string): Observable<Page<CandidateReviewDto[]>> {
-    const url = `${environment.apiUrl}/reviews/getUserQuestionnaireData/${personEmail}/search?candidateName=${candidateName}&sortOrder=${sortOrder}&sortBy=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
+  public searchByCandidateName(candidateName: string, sortOrder: string, sortBy: string, pageNumber: number, pageSize: number, personId: string): Observable<Page<CandidateReviewDto[]>> {
+    const url = `${environment.apiUrl}/reviews/getUserQuestionnaireData/${personId}/search?candidateName=${candidateName}&sortOrder=${sortOrder}&sortBy=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
     return this.http.get<Page<CandidateReviewDto[]>>(url, httpOptions);
   }
 }

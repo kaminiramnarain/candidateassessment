@@ -12,11 +12,6 @@ export const environment = {
       'Content-Type': 'application/json',
     }),
   },
-  oauthClientId: 'client-project-template',
-  oauthLoginUrl: 'http://localhost:9005/auth/realms/elca/protocol/openid-connect/auth',
-  oauthUrl: "http://localhost:9005/auth/realms/elca/protocol/openid-connect/",
-  oauthTokenUrl: 'http://localhost:9005/auth/realms/elca/protocol/openid-connect/token',
-  oauthCallbackUrl: 'http://localhost:4200/auth',
 };
 
 /*

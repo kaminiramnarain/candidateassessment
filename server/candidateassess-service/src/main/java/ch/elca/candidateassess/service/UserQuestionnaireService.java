@@ -10,10 +10,6 @@ public interface UserQuestionnaireService {
 
     void updateUserQuestionnaire(UpdateUserQuestionnaireDto updateUserQuestionnaireDto, String userQuestionnaireId);
 
-<<<<<<< HEAD
-    void inviteCandidate(InviteCandidateDto candidateDto);
-
-=======
     void updateRemainingTime(UpdateTimeDto updateTimeDto);
 
     void updateCheatCount(UUID userQuestionnaireId);
@@ -30,8 +26,9 @@ public interface UserQuestionnaireService {
 
     ValidateTokenDto getCandidateSelectSkillsStatus(String userQuestionnaireId);
 
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
     void saveReviewedUserQuestionnaire(SaveReviewedUserQuestionnaireDto saveReviewedUserQuestionnaireDto, UUID userQuestionnaireId);
+
+    Double getMarksByUserQuestionnaireId(UUID userQuestionnaireId);
 
     void validateId(UUID userQuestionnaireId);
 

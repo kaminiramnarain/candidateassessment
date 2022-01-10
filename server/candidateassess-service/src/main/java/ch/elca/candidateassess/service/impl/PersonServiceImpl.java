@@ -72,23 +72,7 @@ public class PersonServiceImpl implements PersonService {
         return booleanBuilder.and(qPerson.emailAddress.eq(credentialsDto.getEmailAddress())).and(qPerson.password.eq(credentialsDto.getPassword()));
     }
 
-<<<<<<< HEAD
-//    @Override
-//    public LoginDto validateCredentials(CredentialsDto credentialsDto) {
-//        LoginDto loginDto = new LoginDto();
-//        BooleanBuilder credentialsPredicate = buildCredentialsPredicate(credentialsDto);
-//        List<Person> persons = new ArrayList<Person>();
-//        personRepository.findAll(credentialsPredicate).forEach(persons::add);
-//        persons.stream().findFirst()
-//                .ifPresentOrElse(person -> {
-//                    personMapper.mapToLoginDto(loginDto, person);
-//                }, () -> {
-//                    throw new ResourceNotFoundException("Credentials are incorrect!");
-//                });
-//        return loginDto;
-//    }
-
-=======
+    @Override
     public LoginDto validateCredentials(CredentialsDto credentialsDto) {
         LoginDto loginDto = new LoginDto();
         BooleanBuilder credentialsPredicate = buildCredentialsPredicate(credentialsDto);
@@ -102,5 +86,5 @@ public class PersonServiceImpl implements PersonService {
                 });
         return loginDto;
     }
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
+
 }

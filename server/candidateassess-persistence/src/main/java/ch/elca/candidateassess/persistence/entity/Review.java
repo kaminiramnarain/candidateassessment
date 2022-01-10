@@ -24,7 +24,7 @@ public class Review extends AuditModel {
 
     //to implement user id by keycloak as foreign key
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id", referencedColumnName = "person_id", nullable = false)
     private Person person;
 
     @Column(name = "status", nullable = false)

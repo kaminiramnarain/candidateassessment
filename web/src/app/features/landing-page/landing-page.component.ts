@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidateTokenDto } from 'src/app/shared/model';
-import { PublicService } from 'src/app/shared/service/api/public/public.service';
+import { UserQuestionnaireService } from 'src/app/shared/service/api/user-questionnaire/user-questionnaire.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/shared/service/utils/utils.service';
 
@@ -14,7 +14,7 @@ export class LandingPageComponent implements OnInit {
   public token!: string;
   public validateTokenDto!: ValidateTokenDto;
 
-  constructor(private publicService: PublicService,
+  constructor(private userQuestionnaireService: UserQuestionnaireService,
     private router: Router,
     private utilService: UtilsService) { }
 
@@ -31,7 +31,7 @@ export class LandingPageComponent implements OnInit {
 
   public onSubmit(): void {
     this.token = this.token.toUpperCase();
-    this.publicService
+    this.userQuestionnaireService
       .validateToken(this.token)
       .subscribe({
         next: (validateToken) => {

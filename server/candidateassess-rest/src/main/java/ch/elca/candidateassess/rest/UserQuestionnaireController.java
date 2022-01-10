@@ -19,6 +19,11 @@ public class UserQuestionnaireController {
         this.userQuestionnaireService = userQuestionnaireService;
     }
 
+    @GetMapping("/validateToken/{token}")
+    public ValidateTokenDto validateToken(@PathVariable String token) {
+        return userQuestionnaireService.validateToken(token);
+    }
+
     @GetMapping("/validateId/{userQuestionnaireId}")
     public void validateId(@PathVariable UUID userQuestionnaireId) {
          userQuestionnaireService.validateId(userQuestionnaireId);
@@ -29,8 +34,6 @@ public class UserQuestionnaireController {
         userQuestionnaireService.validateIdAndUnderReview(userQuestionnaireId);
     }
 
-<<<<<<< HEAD
-=======
     @GetMapping("/getCheatCount/{userQuestionnaireId}")
     public Integer getCheatCount(@PathVariable("userQuestionnaireId") UUID userQuestionnaireId) {
         return userQuestionnaireService.getCheatCount(userQuestionnaireId);
@@ -51,7 +54,6 @@ public class UserQuestionnaireController {
         return userQuestionnaireService.getMarksByUserQuestionnaireId(userQuestionnaireId);
     }
 
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
     @PutMapping("/saveReviewedUserQuestionnaire/{userQuestionnaireId}")
     public void saveReviewedUserQuestionnaire(@RequestBody SaveReviewedUserQuestionnaireDto saveReviewedUserQuestionnaireDto, @PathVariable("userQuestionnaireId") UUID userQuestionnaireId) {
         userQuestionnaireService.saveReviewedUserQuestionnaire(saveReviewedUserQuestionnaireDto, userQuestionnaireId);
@@ -72,6 +74,10 @@ public class UserQuestionnaireController {
         userQuestionnaireService.updateUserQuestionnaire(updateUserQuestionnaireDto, userQuestionnaireId);
     }
 
+    @PutMapping("/updateRemainingTime")
+    public void updateRemainingTime(@RequestBody UpdateTimeDto updateTimeDto) {
+        userQuestionnaireService.updateRemainingTime(updateTimeDto);
+    }
 
     @PutMapping("/updateCheatCount/{userQuestionnaireId}")
     public void updateCheatCount(@PathVariable("userQuestionnaireId") UUID userQuestionnaireId) {

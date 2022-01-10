@@ -11,7 +11,3 @@ server:
   error:
     include-message: always
     include-binding-errors: always
-keycloak:
-  auth-server-url: http://localhost:9005/auth
-  realm: elca
-  resource: client-project-template

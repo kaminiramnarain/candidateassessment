@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { ReviewService } from 'src/app/shared/service/api/review/review.service';
-import {LocalStorageService} from "angular-2-local-storage";
+
 
 @Component({
   selector: 'app-review-dashboard',
@@ -13,14 +13,14 @@ import {LocalStorageService} from "angular-2-local-storage";
 })
 export class ReviewDashboardComponent implements OnInit {
 
-  constructor(private reviewService: ReviewService,private storage: LocalStorageService,) { }
+  constructor(private reviewService: ReviewService,) { }
 
   public totalElements!: number;
   public pageSizeOptions: number[] = [];
   public candidates: any[] = [];
   public dataSource!: any;
   public searchValue!: string;
-  public personEmail!: any;
+  public personId!: string;
 
   displayedColumns: string[] = [
     'userQuestionnaire.firstName',
@@ -56,7 +56,7 @@ export class ReviewDashboardComponent implements OnInit {
         this.sortBy,
         this.pageNumber,
         this.pageSize,
-        this.personEmail,
+        this.personId,
       )
       .subscribe((data) => {
         this.candidates = data.content;
@@ -101,15 +101,15 @@ export class ReviewDashboardComponent implements OnInit {
   }
 
   public getAllUserQuestionnaires(): void {
-    const personEmail = this.storage.get('email');
+    const personId = localStorage.getItem('personId');
 
-    if (personEmail != undefined) {
-      this.personEmail = personEmail;
+    if (personId != undefined) {
+      this.personId = personId;
     }
 
     this.reviewService
       .getUserQuestionnaireData(
-        this.personEmail,
+        this.personId,
         this.sortOrder,
         this.sortBy,
         this.pageNumber,

@@ -4,7 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CheatDialogComponent } from './cheat-dialog/cheat-dialog/cheat-dialog.component';
 import { IsAnsweredQuestionDto, QuestionDto, QuestionTypeEnum, SubmitAnswerDto } from 'src/app/shared/model';
-import { PublicService } from 'src/app/shared/service/api/public/public.service';
+import { CandidateAnswerService } from 'src/app/shared/service/api/candidate-answer/candidate-answer.service';
+import { QuestionService } from 'src/app/shared/service/api/question/question.service';
+import { QuestionnaireService } from 'src/app/shared/service/api/questionnaire/questionnaire.service';
+import { UserQuestionnaireService } from 'src/app/shared/service/api/user-questionnaire/user-questionnaire.service';
 import { QuestionNumberService } from 'src/app/shared/service/question-number/question-number.service';
 
 @Component({
@@ -30,7 +33,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
   public cheatCount!: number;
   public updateDbInterval: number = 15;
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute, private cdr: ChangeDetectorRef, private publicService: PublicService, private router: Router, private questionNumberService: QuestionNumberService) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private cdr: ChangeDetectorRef, private questionnaireService: QuestionnaireService, private questionService: QuestionService, private candidateAnswerService: CandidateAnswerService, private userQuestionnaireService: UserQuestionnaireService, private router: Router, private questionNumberService: QuestionNumberService) {
     if (!(this.route.snapshot.params['id'] === undefined))
       this.userQuestionnaireId = this.route.snapshot.params['id'];
 
@@ -42,15 +45,17 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
 
   }
 
+
+
   public checkCheatCount(): void {
   if(this.router.url.includes("questionnaire")){
-    this.publicService.updateCheatCount(this.userQuestionnaireId).subscribe(() => {
-      this.publicService.getCheatCount(this.userQuestionnaireId).subscribe((cheat) => {
+    this.userQuestionnaireService.updateCheatCount(this.userQuestionnaireId).subscribe(() => {
+      this.userQuestionnaireService.getCheatCount(this.userQuestionnaireId).subscribe((cheat) => {
         this.cheatCount = cheat;
         console.log(cheat)
         this.openDialog();
         if (cheat > 3) {
-         this.publicService.disqualifyQuestionnaire(this.userQuestionnaireId, this.remainingTime).subscribe();
+         this.userQuestionnaireService.disqualifyQuestionnaire(this.userQuestionnaireId, this.remainingTime).subscribe();
           this.router.navigate([`/test-completed/${this.route.snapshot.params['id']}`]);
         }
       });
@@ -69,14 +74,15 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     });
   }
 
+
   ngOnInit(): void {
     this.checkId();
     this.initialiseQuestion();
-    this.publicService.getQuestion(this.userQuestionnaireId, this.selectedQuestion).subscribe((question) => {
+    this.questionService.getQuestion(this.userQuestionnaireId, this.selectedQuestion).subscribe((question) => {
       this.question = question;
       this.questionNumberService.emitQuestionNumberChangeEvent(this.selectedQuestion);
     });
-    this.publicService.getQuestionnaireData(this.userQuestionnaireId).subscribe((questionnaire) => {
+    this.questionnaireService.getQuestionnaireData(this.userQuestionnaireId).subscribe((questionnaire) => {
       if (!questionnaire.questionnaireOpen) {
         this.router.navigate([`/test-completed/${this.route.snapshot.params['id']}`]);
       }
@@ -98,7 +104,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
   }
 
   public checkId(): void {
-    this.publicService.validateId(this.userQuestionnaireId).subscribe({
+    this.userQuestionnaireService.validateId(this.userQuestionnaireId).subscribe({
       next: () => {
       },
       error: (error) => {
@@ -162,11 +168,11 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       textAnswer: this.question.type == QuestionTypeEnum.OPEN_ENDED || this.QuestionTypeEnum.MULTIPLE_CHOICE ? this.question.answerText! : null!,
       multipleAnswers: this.question.type == QuestionTypeEnum.MULTIPLE_ANSWERS ? this.question.multipleAnswer! : null!
     }
-    this.publicService.submitAnswer(this.answerDto).subscribe(() => {
+    this.candidateAnswerService.submitAnswer(this.answerDto).subscribe(() => {
       if (!isSubmit) {
-        this.publicService.getQuestion(this.userQuestionnaireId, this.selectedQuestion).subscribe((question) => {
+        this.questionService.getQuestion(this.userQuestionnaireId, this.selectedQuestion).subscribe((question) => {
           this.question = question;
-          this.publicService.getQuestionnaireData(this.userQuestionnaireId).subscribe((questionnaire) => {
+          this.questionnaireService.getQuestionnaireData(this.userQuestionnaireId).subscribe((questionnaire) => {
             this.initialiseQuestionnaire(questionnaire);
             this.questionNumberService.emitQuestionNumberChangeEvent(this.selectedQuestion);
             this.checkButtonStatus();
@@ -174,7 +180,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
 
         });
       } else {
-        this.publicService.finishQuestionnaire(this.route.snapshot.params['id'], this.remainingTime).subscribe();
+        this.candidateAnswerService.finishQuestionnaire(this.route.snapshot.params['id'], this.remainingTime).subscribe();
         this.router.navigate([`/test-completed/${this.route.snapshot.params['id']}`]);
       }
     });
@@ -209,7 +215,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
   private updateTime(): void {
     this.remainingTime = this.remainingTime - 1;
     if (this.remainingTime % this.updateDbInterval == 0) {
-      this.publicService.updateRemainingTime(this.userQuestionnaireId, this.remainingTime).subscribe();
+      this.userQuestionnaireService.updateRemainingTime(this.userQuestionnaireId, this.remainingTime).subscribe();
     }
     this.isTimeFinishing = this.remainingTime <= 180 ? true : false;
   }

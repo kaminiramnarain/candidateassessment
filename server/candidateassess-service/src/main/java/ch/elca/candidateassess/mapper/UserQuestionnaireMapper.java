@@ -38,7 +38,6 @@ public interface UserQuestionnaireMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdOn", ignore = true)
     @Mapping(target = "comment", ignore = true)
-    @Mapping(target = "candidateSelectSkills", ignore = true)
     @Mapping(target = "cheatCount", ignore = true)
     @Mapping(target = "candidateSelectSkills", ignore = true)
     @Mapping(target = "autoGenerate", ignore = true)
@@ -60,30 +59,16 @@ public interface UserQuestionnaireMapper {
     @Mapping(target = "emailAddress", ignore = true)
     @Mapping(target = "createdOn", ignore = true)
     @Mapping(target = "comment", ignore = true)
-    @Mapping(target = "candidateSelectSkills", ignore = true)
     @Mapping(target = "cheatCount", ignore = true)
     @Mapping(target = "candidateSelectSkills", ignore = true)
     @Mapping(target = "autoGenerate", ignore = true)
     void mapInviteCandidateDtoToExistingUserQuestionnaire(@MappingTarget UserQuestionnaire userQuestionnaire, InviteCandidateDto inviteCandidateDto);
 
-<<<<<<< HEAD
-    @Mapping(target = "marksObtained", source = "userQuestionnaire.marks")
-    @Mapping(target = "timeTaken", source = "userQuestionnaire.timeTakenToCompleteQuestionnaire")
-    FilledQuestionnaireDto mapToFilledQuestionnaireDto(@MappingTarget FilledQuestionnaireDto filledQuestionnaireDto, UserQuestionnaire userQuestionnaire);
-
-    @Mapping(target = "userQuestionnaireId", source = "userQuestionnaire.id")
-    ValidateTokenDto mapToValidateToken(@MappingTarget ValidateTokenDto validateTokenDto,UserQuestionnaire userQuestionnaire);
-
-
-    void mapSaveReviewedUserQuestionnaireDtoToExistingUserQuestionnaire(@MappingTarget UserQuestionnaire userQuestionnaire, SaveReviewedUserQuestionnaireDto saveReviewedUserQuestionnaireDto);
-
-}
-=======
     @Mapping(target = "length", ignore = true)
     @Mapping(target = "marksObtained", source = "userQuestionnaire.marks")
     @Mapping(target = "questions", ignore = true)
     @Mapping(target = "timeTaken", source = "userQuestionnaire.timeTakenToCompleteQuestionnaire")
-    void mapToFilledQuestionnaireDto(@MappingTarget FilledQuestionnaireDto filledQuestionnaireDto, UserQuestionnaire userQuestionnaire);
+    FilledQuestionnaireDto mapToFilledQuestionnaireDto(@MappingTarget FilledQuestionnaireDto filledQuestionnaireDto, UserQuestionnaire userQuestionnaire);
 
     @Mapping(target = "userQuestionnaireId", source = "userQuestionnaire.id")
     void mapToValidateToken(@MappingTarget ValidateTokenDto validateTokenDto, UserQuestionnaire userQuestionnaire);
@@ -110,4 +95,3 @@ public interface UserQuestionnaireMapper {
     void mapSaveReviewedUserQuestionnaireDtoToExistingUserQuestionnaire(@MappingTarget UserQuestionnaire userQuestionnaire, SaveReviewedUserQuestionnaireDto saveReviewedUserQuestionnaireDto);
 
 }
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325

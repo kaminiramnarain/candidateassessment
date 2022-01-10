@@ -17,14 +17,12 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  // public login(emailAddress: string, password: string): Observable<LoginDto> {
-  //   const url = `${environment.apiUrl}/persons/validateCredentials`;
-  //   var body = {
-  //     "emailAddress": emailAddress,
-  //     "password": password
-  //   };
-  //   return this.http.post<LoginDto>(url, body, httpOptions);
-  // }
-
-
+  public login(emailAddress: string, password: string): Observable<LoginDto> {
+    const url = `${environment.apiUrl}/persons/validateCredentials`;
+    var body = {
+      "emailAddress": emailAddress,
+      "password": password
+    };
+    return this.http.post<LoginDto>(url, body, httpOptions);
+  }
 }

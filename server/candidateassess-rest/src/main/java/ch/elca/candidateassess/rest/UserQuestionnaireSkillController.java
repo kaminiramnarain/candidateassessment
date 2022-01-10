@@ -18,4 +18,9 @@ public class UserQuestionnaireSkillController {
         this.userQuestionnaireSkillService = userQuestionnaireSkillService;
     }
 
+    @PostMapping
+    public void createUserQuestionnaireSkill(@RequestBody CreateUserQuestionnaireSkillDto createUserQuestionnaireSkillDto) {
+        userQuestionnaireSkillService.saveUserQuestionnaireSkill(createUserQuestionnaireSkillDto);
+    }
+
 }

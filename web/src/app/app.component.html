@@ -22,7 +22,7 @@
     </mat-icon>
   </button>
 
-  <button mat-flat-button class="button" *ngIf="!isLoggedIn()" routerLink="/login">
+  <button mat-flat-button class="button" *ngIf="!isLoggedIn() && !onLoginPage()" routerLink="/login">
     Log in
     <mat-icon class="button-icon">
       login

@@ -20,5 +20,8 @@ export class SkillService {
     return this.http.get<SkillDto[]>(url, { params: params });
   }
 
-
+  public submitSkills(body: UserQuestionnaireSkillDto): Observable<UserQuestionnaireSkillDto> {
+    const url = `${environment.apiUrl}/user-questionnaire-skills`;
+    return this.http.post<UserQuestionnaireSkillDto>(url, body, environment.httpOptions);
+  }
 }

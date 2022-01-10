@@ -15,6 +15,6 @@ public interface PersonService {
 
     List<ReviewerDto> getReviewersByName(String reviewerName);
 
-   // LoginDto validateCredentials(CredentialsDto credentialsDto);
+    LoginDto validateCredentials(CredentialsDto credentialsDto);
 
 }

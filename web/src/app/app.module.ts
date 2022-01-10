@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS, } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -75,12 +75,9 @@ import { ViewCandidateProfileComponent } from './features/hr/candidate-dashboard
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ViewCandidateQuestionnaireComponent } from './features/hr/candidate-dashboard/view-candidate-questionnaire/view-candidate-questionnaire.component';
 import { LoginComponent } from './features/login/login.component';
-import { CheatDialogComponent } from './features/candidate/questionnaire/cheat-dialog/cheat-dialog/cheat-dialog.component';
 import { SelectQuestionsComponent } from './features/reviewer/select-questions/select-questions/select-questions.component';
 import { CustomizeQuestionnaireDashboardComponent } from './features/reviewer/customize-questionnaire-dashboard/customize-questionnaire-dashboard/customize-questionnaire-dashboard.component';
-import { LocalStorageModule } from 'angular-2-local-storage';
-import { AuthComponent } from './shared/auth/auth.component';
-import { AuthInterceptor } from './shared/service/oauth/auth.interceptor';
+import { CheatDialogComponent } from './features/candidate/questionnaire/cheat-dialog/cheat-dialog/cheat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +117,6 @@ import { AuthInterceptor } from './shared/service/oauth/auth.interceptor';
     ViewCandidateQuestionnaireComponent,
     ViewCandidateProfileComponent,
     LoginComponent,
-    AuthComponent,
     SelectQuestionsComponent,
     CustomizeQuestionnaireDashboardComponent,
     CheatDialogComponent,
@@ -168,12 +164,8 @@ import { AuthInterceptor } from './shared/service/oauth/auth.interceptor';
     TextFieldModule,
     MatTooltipModule,
     NgApexchartsModule,
-    LocalStorageModule.forRoot({
-      prefix: 'candidateassess',
-      storageType: 'localStorage'
-    }),
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

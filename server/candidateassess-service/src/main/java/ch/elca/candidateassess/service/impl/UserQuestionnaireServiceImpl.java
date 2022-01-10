@@ -12,7 +12,6 @@ import ch.elca.candidateassess.service.EmailSenderService;
 import ch.elca.candidateassess.service.UserQuestionnaireService;
 import com.querydsl.core.BooleanBuilder;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import com.querydsl.core.BooleanBuilder;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -75,9 +74,6 @@ public class UserQuestionnaireServiceImpl implements UserQuestionnaireService {
         });
     }
 
-<<<<<<< HEAD
-
-=======
     @Override
     public ValidateTokenDto getCandidateSelectSkillsStatus(String userQuestionnaireId) {
         ValidateTokenDto validateTokenDto = new ValidateTokenDto();
@@ -141,7 +137,6 @@ public class UserQuestionnaireServiceImpl implements UserQuestionnaireService {
         }
         return validateTokenDto;
     }
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
 
     @Override
     public void validateId(UUID userQuestionnaireId) {
@@ -203,9 +198,6 @@ public class UserQuestionnaireServiceImpl implements UserQuestionnaireService {
         emailSenderService.sendEmailToCandidate(userQuestionnaire.getEmailAddress(), subject, body);
     }
 
-<<<<<<< HEAD
-
-=======
     private BooleanBuilder buildCandidateAnswerPredicate(UUID userQuestionnaireId) {
         var qCandidateAnswer = QCandidateAnswer.candidateAnswer;
         BooleanBuilder booleanBuilder = new BooleanBuilder();
@@ -241,6 +233,5 @@ public class UserQuestionnaireServiceImpl implements UserQuestionnaireService {
     public Boolean getQuestionnaireType(UUID userQuestionnaireId) {
         return userQuestionnaireRepository.getById(userQuestionnaireId).getAutoGenerate();
     }
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
 }
 

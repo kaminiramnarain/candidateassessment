@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { QuestionDto, QuestionTypeEnum } from 'src/app/shared/model';
-import { PublicService } from 'src/app/shared/service/api/public/public.service';
+import { QuestionService } from 'src/app/shared/service/api/question/question.service';
 import Quill from 'quill'
 import BlotFormatter from 'quill-blot-formatter';
 import { QuestionNumberService } from 'src/app/shared/service/question-number/question-number.service';
@@ -34,7 +34,7 @@ export class OpenTypeQuestionComponent implements OnInit, OnDestroy, AfterViewIn
     },
   };
 
-  constructor(private route: ActivatedRoute, private publicService: PublicService, private questionNumberService: QuestionNumberService) { }
+  constructor(private route: ActivatedRoute, private questionService: QuestionService, private questionNumberService: QuestionNumberService) { }
 
   ngOnInit(): void {
     this.initialiseQuestion();
@@ -45,7 +45,7 @@ export class OpenTypeQuestionComponent implements OnInit, OnDestroy, AfterViewIn
       console.log("received open ended" + questionNumber);
 
       this.selectedQuestion = questionNumber;
-      this.publicService.getQuestion(this.route.snapshot.params['id'], questionNumber).subscribe((question) => {
+      this.questionService.getQuestion(this.route.snapshot.params['id'], questionNumber).subscribe((question) => {
         this.question = question;
       });
     });

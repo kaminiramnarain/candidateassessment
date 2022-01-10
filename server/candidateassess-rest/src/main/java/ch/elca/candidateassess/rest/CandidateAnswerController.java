@@ -20,11 +20,19 @@ public class CandidateAnswerController {
         this.candidateAnswerService = candidateAnswerService;
     }
 
+    @PostMapping
+    public void createCandidateAnswer(@RequestBody CreateCandidateAnswerDto createCandidateAnswerDto) {
+        candidateAnswerService.saveCandidateAnswer(createCandidateAnswerDto);
+    }
 
     @PutMapping("/saveMarks")
     public void saveCandidateMarks(@RequestBody SaveCandidateMarksDto saveCandidateMarksDto) {
         candidateAnswerService.saveCandidateMarks(saveCandidateMarksDto);
     }
 
+    @PutMapping("/finish")
+    public void finishQuestionnaire(@RequestParam UUID userQuestionnaireId, @RequestParam Integer remainingTime) {
+        candidateAnswerService.finishQuestionnaire(userQuestionnaireId, remainingTime);
+    }
 
 }

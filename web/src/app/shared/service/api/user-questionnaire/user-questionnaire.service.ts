@@ -48,6 +48,34 @@ export class UserQuestionnaireService {
     );
   }
 
+
+  public updateRemainingTime(userQuestionnaireId: string, remainingTime: number): Observable<any> {
+    var body = {
+      "userQuestionnaireId": userQuestionnaireId,
+      "remainingTime": remainingTime
+    }
+    const url = `${environment.apiUrl}/user-questionnaires/updateRemainingTime`;
+    return this.http.put<any>(url, body);
+  }
+
+  public updateCheatCount(userQuestionnaireId: string): Observable<any> {
+    const url = `${environment.apiUrl}/user-questionnaires/updateCheatCount/${userQuestionnaireId}`;
+    return this.http.put<any>(url, httpOptions);
+  }
+
+  public getCheatCount(userQuestionnaireId: string): Observable<any> {
+    const url = `${environment.apiUrl}/user-questionnaires/getCheatCount/${userQuestionnaireId}`;
+    return this.http.get<any>(url, httpOptions);
+  }
+
+  
+  public disqualifyQuestionnaire(userQuestionnaireId: string, remainingTime: number): Observable<any> {
+    const url = `${environment.apiUrl}/user-questionnaires/disqualifyQuestionnaire/${userQuestionnaireId}?remainingTime=${remainingTime}`;
+    return this.http.put<any>(url, httpOptions);
+  }
+
+
+
   public inviteCandidate(body: InviteCandidateDto, userQuestionnaireId: string): Observable<InviteCandidateDto> {
     const url = `${environment.apiUrl}/user-questionnaires/inviteCandidate/${userQuestionnaireId}`;
     return this.http.put<InviteCandidateDto>(
@@ -56,6 +84,13 @@ export class UserQuestionnaireService {
       httpOptions
     );
   }
+
+
+  public validateToken(token: string): Observable<ValidateTokenDto> {
+    const url = `${environment.apiUrl}/user-questionnaires/validateToken/${token}`;
+    return this.http.get<ValidateTokenDto>(url, httpOptions);
+  }
+
   
   public getQuestionnaireType(userQuestionnaireId: string): Observable<any> {
     const url = `${environment.apiUrl}/user-questionnaires/getQuestionnaireType/${userQuestionnaireId}`;
@@ -70,6 +105,17 @@ export class UserQuestionnaireService {
   public validateIdAndUnderReview(userQuestionnaireId: string): Observable<any> {
     const url = `${environment.apiUrl}/user-questionnaires/validateIdAndUnderReview/${userQuestionnaireId}`;
     return this.http.get<any>(url, httpOptions);
+  }
+
+  public getCandidateSelectSkillsStatus(userQuestionnaireId: string): Observable<ValidateTokenDto> {
+    const url = `${environment.apiUrl}/user-questionnaires/getCandidateSelectSkillsStatus/${userQuestionnaireId}`;
+    return this.http.get<ValidateTokenDto>(url, httpOptions);
+  }
+
+
+  public getMarks(userQuestionnaireId: string): Observable<number> {
+    const url = `${environment.apiUrl}/user-questionnaires/marks/${userQuestionnaireId}`;
+    return this.http.get<number>(url, httpOptions);
   }
 
 }

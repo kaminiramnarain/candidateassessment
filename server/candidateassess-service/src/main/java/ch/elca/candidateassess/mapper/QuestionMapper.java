@@ -1,14 +1,9 @@
 package ch.elca.candidateassess.mapper;
 
 import ch.elca.candidateassess.dto.*;
-<<<<<<< HEAD
-import ch.elca.candidateassess.persistence.entity.CandidateAnswer;
-=======
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
 import ch.elca.candidateassess.persistence.entity.Question;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = UUIDMapper.class)
 public interface QuestionMapper {
@@ -30,30 +25,6 @@ public interface QuestionMapper {
     @Mapping(target = "type", source = "questionType")
     Question mapToQuestionFromEditQuestionDto(EditQuestionDto editQuestionDto);
 
-<<<<<<< HEAD
-
-    @Mapping(target = "skill.id", source = "newQuestionDto.skillId")
-    @Mapping(target = "skillLevel", source = "newQuestionDto.level")
-    @Mapping(target = "type", source = "newQuestionDto.questionType")
-    @Mapping(target = "timeAssignedForQuestion", source = "newQuestionDto.time")
-    Question mapToNewQuestion(NewQuestionDto newQuestionDto);
-
-    @Mapping(target = "questionType", source = "question.type")
-    @Mapping(target = "level", source = "question.skillLevel")
-    @Mapping(target = "time", source = "question.timeAssignedForQuestion")
-    EditQuestionDto mapToEditQuestionDto (Question question);
-
-    QuestionDto mapToQuestionDto(Question question);
-
-    @Mapping(target = "questionType", source = "question.type")
-    @Mapping(target = "level", source = "question.skillLevel")
-    @Mapping(target = "time", source = "question.timeAssignedForQuestion")
-    ViewQuestionDto mapToViewQuestionDto(Question question);
-
-
-
-
-=======
     @Mapping(target = "createdOn", ignore = true)
     @Mapping(target = "updatedOn", ignore = true)
     @Mapping(target = "questionEnglishFiltered", ignore = true)
@@ -82,5 +53,4 @@ public interface QuestionMapper {
     @Mapping(target = "time", source = "question.timeAssignedForQuestion")
     ViewQuestionDto mapToViewQuestionDto(Question question);
 
->>>>>>> d2f92d0d4fb8ec9b890d8dc9842b4ac40634f325
 }

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Outpu
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MultipleAnswerDto } from 'src/app/shared/model';
-import { PublicService } from 'src/app/shared/service/api/public/public.service';
+import { QuestionService } from 'src/app/shared/service/api/question/question.service';
 import { QuestionNumberService } from 'src/app/shared/service/question-number/question-number.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class MultipleAnswersQuestionComponent implements OnInit, OnDestroy, Afte
   public isClearSelectionButtonDisabled: boolean = true;
   public subscription!: Subscription;
 
-  constructor(private route: ActivatedRoute, private publicService: PublicService, private questionNumberService: QuestionNumberService) {
+  constructor(private route: ActivatedRoute, private questionService: QuestionService, private questionNumberService: QuestionNumberService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class MultipleAnswersQuestionComponent implements OnInit, OnDestroy, Afte
       console.log("received multiple answers" + questionNumber);
 
       this.selectedQuestion = questionNumber;
-      this.publicService.getQuestion(this.route.snapshot.params['id'], this.selectedQuestion).subscribe((question) => {
+      this.questionService.getQuestion(this.route.snapshot.params['id'], this.selectedQuestion).subscribe((question) => {
         this.answers = question.multipleAnswer;
         this.isClearSelectionButtonDisabled = true;
         if (this.answers != null) {
