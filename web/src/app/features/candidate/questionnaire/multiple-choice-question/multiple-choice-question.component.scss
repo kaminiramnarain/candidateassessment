@@ -1,0 +1,67 @@
+.text-editor-container {
+    margin-top: 4vh;
+    height: 58vh;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .radio-button {
+    padding-top: 1.5vh;
+    margin: 10px;
+  }
+
+  .label-text {
+    font-size: 18.0px;
+    font-family: 'proxima-nova-bold';
+  }
+
+  .answer-text {
+    font-size: 16.0px;
+    font-family: 'proxima-nova';
+    padding-left: 0.75vw;
+    padding-top: 0.2vh;
+    white-space: initial;
+    word-wrap: break-word;
+  }
+
+::ng-deep .mat-radio-label-content {
+  padding-top: 5px;
+}
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    opacity: 0 !important; /*click effect color change*/
+    background-color: #e13616 !important;  }
+    
+    ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #e13616 !important; /*inner circle color change*/  }
+    
+    ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #e13616 !important; /*outer ring color change*/  }
+
+    .button-container {
+     margin-top: 5vh;
+    }
+
+    .button {
+      background-color: red;
+      font-family: "proxima-nova";
+      margin-left: 0.5vw;
+      padding-top: 2px;
+      color: white;
+      font-size: 14px;
+      height: 46px;
+      width: 100px;
+      border-radius: 10px;
+      float: right;
+    }
+    
+    .button-icon {
+      transform: scale(0.9);
+      color: white;
+      padding-left: 3px;
+      padding-bottom: 3px;
+    }

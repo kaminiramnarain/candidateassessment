@@ -1,0 +1,14 @@
+<div class="text-editor-container">
+    <label id="radio-group-label" class="label-text">Choose your answer from the list:</label>
+    <mat-radio-group aria-labelledby="radio-group-label" class="radio-group heading-four" (change)="changeSelection()"
+        [(ngModel)]="answer">
+        <mat-radio-button class="radio-button answer-text" *ngFor="let answer of possibleAnswers" [value]="answer.id">
+            <div class="heading-four answer-text">{{answer.answerEnglish}}</div>
+        </mat-radio-button>
+    </mat-radio-group>
+    <div class="button-container">
+        <button mat-raised-button class="button" [disabled]="isClearSelectionButtonDisabled" (click)="clearSelection()">
+            Reset <mat-icon class="button-icon">clear</mat-icon>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="row max-height">
+    <form novalidate [formGroup]="formGroup"></form>
+    <div class="column">
+
+        <!-- <div class="heading-four-thin open-ended-note"><strong>NOTE:</strong> This question will not automatically be
+            marked. A reviewer has to be assigned to the questionnaire for marking.</div> -->
+
+
+        <div class="skill-container">
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Skill</mat-label>
+                    <mat-select  (closed)="onClose()" [(ngModel)]="question.skill.id" name="skill" required>
+                        <input class="search-input dropdown" (keyup)="reviewerOnKey($event)"
+                            [(ngModel)]="searchValueSkill" matInput placeholder="Search for skill">
+                        <mat-option class="dropdown" *ngFor="let skill of skillList" [value]="skill.id">{{skill.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.invalid">Skill cannot be empty</mat-error>
+                </mat-form-field>
+            </div>
+            <span class="spacer"></span>
+            <div>
+                <mat-form-field appearance="outline" class="level-input">
+                    <mat-label>Level</mat-label>
+                    <mat-select [(ngModel)]="selectedSkillLevel" name="level"
+                        (selectionChange)="changeSkillLevel($event)">
+                        <mat-option class="dropdown" *ngFor="let skillLevel of skillLevelList" [value]="skillLevel">
+                            {{skillLevel}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="marks-duration-container">
+            <div>
+                <mat-form-field class="input-field-container" appearance="outline">
+                    <mat-label>Marks</mat-label>
+                    <input matInput class="input" type="number" min=1 max=10 [(ngModel)]="question.marks" required />
+                    <mat-error *ngIf="formGroup.invalid">Question should be atleast 1 mark and maximum 10 marks
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <span class="spacer"></span>
+            <div>
+                <mat-form-field class="input-field-container" appearance="outline">
+                    <mat-label>Duration (in seconds)</mat-label>
+                    <input matInput class="input" type="number" min=30 max=300 [(ngModel)]="question.time" required />
+                    <mat-error *ngIf="formGroup.invalid">Duration should be at least 60 seconds and maximum 300 seconds
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="reviewer-container">
+            <mat-form-field class="input-field-container reviewer-input" appearance="outline">
+                <mat-label>Assign a reviewer (Feature currently not available)</mat-label>
+                <input matInput class="input" type="text" disabled />
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div class="column">
+
+        <div class="text-editor-container">
+            <quill-editor [(ngModel)]="question.questionEnglish" placeholder="Type your question here..." class="editor"
+                [modules]="quillConfig"></quill-editor>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<mat-toolbar class="mat-elevation-z8 title">
+  <div *ngIf="isLoggedIn()">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over' && showNavBar === true" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+  </div>
+
+  <div class="logo-container">
+    <img class="toolbar-logo" src="../assets/images/elca-logo.png" (click)="navigateToDashboard()" />
+
+  </div>
+
+  Candidate Assessment
+
+  <span class="spacer"></span>
+
+  <button mat-flat-button class="button" *ngIf="isLoggedIn()" (click)="logUserOut()">
+    Log out
+    <mat-icon class="button-icon">
+      logout
+    </mat-icon>
+  </button>
+
+  <button mat-flat-button class="button" *ngIf="!isLoggedIn()" routerLink="/login">
+    Log in
+    <mat-icon class="button-icon">
+      login
+    </mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" mode="over" class="mat-elevation-z8 navigation-bar">
+    <img class="avatar mat-elevation-z8" src="../assets/images/profile-picture.jfif" />
+
+    <div class="heading-three name">{{name}}</div>
+
+    <p class="heading-four-thin designation">ELCAdemy</p>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/dashboard" (click)="sidenav.toggle()">
+      <mat-icon>dashboard</mat-icon>
+      <span class="heading-four">Dashboard</span>
+    </button>
+
+    <button *ngIf="isHR()" mat-button class="menu-button" routerLink="/candidate-dashboard" (click)="sidenav.toggle()">
+      <mat-icon>supervisor_account</mat-icon>
+      <span class="heading-four">Candidates</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/questions-dashboard" (click)="sidenav.toggle()">
+      <mat-icon>insert_drive_file</mat-icon>
+      <span class="heading-four">Questions</span>
+    </button>
+
+    <button *ngIf="isHR()" mat-button class="menu-button" routerLink="/invite-candidate" (click)="sidenav.toggle()">
+      <mat-icon>access_time</mat-icon>
+      <span class="heading-four">Scheduler</span>
+    </button>
+
+    <button *ngIf="isReviewer()" mat-button class="menu-button" routerLink="/review-dashboard"
+      (click)="sidenav.toggle()">
+      <mat-icon>assignment</mat-icon>
+      <span class="heading-four">Review Questionnaire</span>
+    </button>
+
+    <button *ngIf="isReviewer()" mat-button class="menu-button" routerLink="/customize-questionnaire-dashboard"
+    (click)="sidenav.toggle()">
+    <mat-icon>question_answer</mat-icon>
+    <span class="heading-four">Customize Questionnaire</span>
+  </button>
+
+    <mat-divider></mat-divider>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

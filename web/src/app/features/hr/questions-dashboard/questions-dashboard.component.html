@@ -1,0 +1,130 @@
+<mat-card class="card">
+
+    <div class="header-container">
+
+        <div class="heading-one-bold title-text">Questions</div>
+        <button routerLink="/create-question" mat-flat-button class="add-button" color="primary">
+            <mat-icon class="add-icon">add</mat-icon>
+            Add question
+        </button>
+    </div>
+    <div class="searchbar">
+        <mat-form-field class="search-input pr-2" appearance="outline">
+            <mat-label>Search question</mat-label>
+            <span matPrefix>
+                <mat-icon class="search-icon" matPrefix>search</mat-icon>
+            </span>
+            <input [(ngModel)]="searchEventValue" (keyup)="onKey($event)" matInput
+                placeholder="Filter by question content" />
+            <button *ngIf="searchEventValue" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearchValue()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="question-type-input pr-2">
+            <mat-label>Question type</mat-label>
+            <mat-select [(ngModel)]="selectedQuestionType" name="questionType"
+                (selectionChange)="selectionChanged('questionType', $event)">
+                <mat-option class="dropdown" *ngFor="let questionType of questionTypeList" [value]="questionType">
+                    {{questionType}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="skill-input pr-2">
+            <mat-label>Skill</mat-label>
+            <mat-select (closed)="onClose()"[(ngModel)]="selectedSkillId" name="skill"
+                (selectionChange)="selectionChanged('skill', $event)">
+                <input class="search-input-skill dropdown" (keyup)="skillOnKey($event)" [(ngModel)]="searchValueSkill"
+                    matInput placeholder="Search for skill">
+                <mat-option class="dropdown" *ngFor="let skill of skillList" [value]="skill.id">{{skill.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="level-input">
+            <mat-label>Level</mat-label>
+            <mat-select [(ngModel)]="selectedSkillLevel" name="level"
+                (selectionChange)="selectionChanged('level', $event)">
+                <mat-option class="dropdown" *ngFor="let skillLevel of skillLevelList" [value]="skillLevel">
+                    {{skillLevel}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-flat-button class="reset-button" color="primary" (click)="resetSearchFields()">
+            <mat-icon class="reset-icon">clear</mat-icon>
+        </button>
+    </div>
+    <div class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" class="mat-elevation-z2">
+
+            <ng-container matColumnDef="questionEnglish">
+                <th class="question-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by question">
+                    Question</th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="pointer" [innerHtml]="element.questionEnglish | noSanitize"></div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="questionType">
+                <th class="question-type-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by type">Question Type
+                </th>
+                <td mat-cell *matCellDef="let element">{{ convertTextToReadable(element.questionType) }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="skill">
+                <th class="skill-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by skill">
+                    Skill</th>
+                <td mat-cell *matCellDef="let element">{{ element.skill.name }}</td>
+            </ng-container>
+            <ng-container matColumnDef="level">
+                <th class="level-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by level">
+                    Level</th>
+                <td mat-cell *matCellDef="let element">{{ convertTextToReadable(element.level) }}</td>
+            </ng-container>
+            <ng-container matColumnDef="marks">
+                <th class="marks-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by marks">
+                    Marks</th>
+                <td mat-cell *matCellDef="let element">{{ element.marks }}</td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+                <th class="time-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by time">
+                    Time</th>
+                <td mat-cell *matCellDef="let element">{{ element.time }}s</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th class="actions-column" mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <button matTooltip="View question">
+                        <mat-icon (click)="viewQuestion(element)" aria-label="view icon" class="view-icon" matSuffix>
+                            remove_red_eye</mat-icon>
+                    </button>
+                    <button matTooltip="Edit question">
+                        <mat-icon routerLink="/questions/{{element.id}}" aria-label="edit icon" class="edit-icon"
+                            matSuffix>edit</mat-icon>
+                    </button>
+                    <button matTooltip="Delete question">
+                        <mat-icon aria-label="delete icon" (click)="openDialog(element.id)" class="delete-icon"
+                            matSuffix>
+                            delete
+                        </mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator #paginator [length]="totalElements" [pageSize]="pageSize"
+            (page)="pageEvent = $event; changePageData($event)" [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page" class="mat-paginator-sticky">
+        </mat-paginator>
+    </div>
+
+</mat-card>

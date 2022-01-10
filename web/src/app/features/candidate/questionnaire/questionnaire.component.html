@@ -1,0 +1,85 @@
+<mat-card class="card center">
+  <div class="row">
+    <div class="column column-main">
+      <div>
+        <div class="row mb-1">
+          <mat-icon aria-hidden="false" class="question-icon mr-2">help</mat-icon>
+          <div class="heading-two-bold mr-2">Question</div>
+          <div class="heading-three question-number">
+            {{ selectedQuestion }} of {{ numberOfQuestions }}
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="heading-four question" [innerHtml]="question.questionEnglish"></div>
+        <div class="heading-four-thin marks">[{{question.marks}} marks]</div>
+      </div>
+    </div>
+
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <div class="column column-main">
+      <div>
+        <div class="row mb-1">
+          <mat-icon aria-hidden="false" class="question-icon mr-2">format_size</mat-icon>
+          <div class="heading-two-bold">Answer</div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <app-open-type-question-questionnaire *ngIf="checkQuestionType(QuestionTypeEnum.OPEN_ENDED)"
+          (onChangeOpenTypeQuestion)="updateAnswer($event, question.id)" [selectedQuestion]="selectedQuestion">
+        </app-open-type-question-questionnaire>
+
+        <app-multiple-choice-question-questionnaire *ngIf="checkQuestionType(QuestionTypeEnum.MULTIPLE_CHOICE)"
+          [possibleAnswers]="question.possibleAnswers"
+          (onChangeMultipleChoiceQuestion)="updateAnswer($event, question.id)" [selectedQuestion]="selectedQuestion">
+        </app-multiple-choice-question-questionnaire>
+
+        <app-multiple-answers-question-questionnaire *ngIf="checkQuestionType(QuestionTypeEnum.MULTIPLE_ANSWERS)"
+          (onChangeMultipleAnswersQuestion)="updateAnswer($event, question.id)" [answers]="question.multipleAnswer"
+          [selectedQuestion]="selectedQuestion">
+        </app-multiple-answers-question-questionnaire>
+
+      </div>
+    </div>
+
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <div class="column column-sub">
+      <div class="row mb-1">
+        <mat-icon aria-hidden="false" class="question-icon mr-2">av_timer</mat-icon>
+        <div class="heading-two-bold mr-2 elapsed-time-text">Elapsed Time</div>
+      </div>
+
+      <div class="question-timer-container">
+        <div class="timer-container">
+
+          <div class="time-left-container">
+            <div class="heading-one time-left-text" [ngStyle]="{'color': isTimeFinishing ? '#e13616' : 'black'}">
+              {{displayRemainingTime}}</div>
+            <div class="heading-one mins-text" [ngStyle]="{'color': isTimeFinishing ? '#e13616' : 'black'}">min(s)</div>
+          </div>
+
+          <div class="total-time-container">
+            <div class="heading-one-thin total-time-text">of {{duration}}:00 mins</div>
+          </div>
+
+        </div>
+
+        <div class="heading-three-bold mr-2 question-number-text">
+          <u>Questions</u>
+        </div>
+
+        <app-question-number *ngFor="let question of questionsNumbers" [isAnswered]="question.isAnswered"
+          [selectedQuestion]="selectedQuestion" [questionNumber]="question.questionNumber"
+          (onChangeQuestion)="changeQuestion($event)">
+        </app-question-number>
+      </div>
+
+      <button mat-raised-button class="button" (click)="submit()">
+        {{ isButtonSubmit ? 'Submit' : 'Next Question' }}
+        <mat-icon class="button-icon">{{ isButtonSubmit ? 'check' : 'arrow_forward' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

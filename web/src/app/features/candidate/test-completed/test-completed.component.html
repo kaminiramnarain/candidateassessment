@@ -1,0 +1,29 @@
+<mat-card class="card center">
+  <div class="row max-height">
+    <div class="column">
+      <div class="accent-border-left"></div>
+      <img class="test-completed-image center" src="../../../assets/images/test-completed.svg"
+        alt="center test-completed-image" />
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="column">
+      <div class="heading-one-bold">Thank you for taking this test</div>
+      <div class="heading-four">
+        The recruiter will get back to you shortly with the final results. We
+        wish you all the best for the next steps in your application.
+      </div>
+      <div class="heading-four">
+        Click on 'Results' to get a provisional result.
+      </div>
+      <div class="button-container">
+        <button mat-flat-button class="button center" (click)="openDialog()" color="primary">
+          Results
+        </button>
+        <button mat-flat-button class="button-close center" (click)="navigateToHome()" color="primary">
+          Done
+        </button>
+      </div>
+    </div>
+    <div class="accent-border-right"></div>
+  </div>
+</mat-card>

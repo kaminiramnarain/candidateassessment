@@ -1,0 +1,19 @@
+<div class="text-editor-container">
+    <section class="section">
+        <div class="label-text">Choose one or more answers:</div>
+        <p *ngFor="let answer of answers; 
+        let index = index;
+        trackBy: trackByIndex" class="answer-text">
+            <mat-checkbox class="custom-frame" (change)="appendChange($event, answer.id)"
+                [(ngModel)]="answers[index].value">
+                <div class="heading-four answer-text">{{answer.answerEnglish}}</div>
+            </mat-checkbox>
+        </p>
+        <div class="button-container">
+            <button mat-raised-button class="button" [disabled]="isClearSelectionButtonDisabled"
+                (click)="resetAnswers()">
+                Reset <mat-icon class="button-icon">clear</mat-icon>
+            </button>
+        </div>
+    </section>
+</div>

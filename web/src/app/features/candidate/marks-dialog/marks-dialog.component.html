@@ -1,0 +1,27 @@
+<div class="row max-height">
+  <div class="column">
+    <img class="marks-image center max-height" src="../../../assets/images/marks.svg"
+      alt="center test-completed-image" />
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="column container">
+    <div class="heading-one-bold" mat-dialog-title>Results</div>
+    <!-- <button [mat-dialog-close]="true" class="close-button">
+      <mat-icon>close icon</mat-icon>
+    </button> -->
+    <div mat-dialog-content>
+      <div class="heading-four paragraph">
+        Congratulations on completing the test. You have obtained
+        <strong> {{ data.marks }}% </strong> as provisional result. Open-ended
+        and coding questions are yet to be marked.
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <div class="button-container">
+        <button class="button" mat-flat-button mat-dialog-close>
+          Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

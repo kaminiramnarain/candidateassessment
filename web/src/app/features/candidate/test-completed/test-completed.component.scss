@@ -1,0 +1,80 @@
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  width: 80vw;
+  height: 60vh;
+}
+
+.row {
+  display: flex;
+}
+
+.max-height {
+  height: 100%;
+}
+
+.column {
+  flex: 50%;
+}
+
+.test-completed-image {
+  padding-top: 10vh;
+  width: 22vw;
+}
+
+.heading-one-bold {
+  margin-top: 8vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  padding-left: 5vw;
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+  position: fixed;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  margin-top: auto;
+  height: 30vh;
+  width: 5px;
+}
+
+.heading-four {
+  margin-top: 2vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.button-container {
+  display: flex;
+  padding-top: 40px;
+}
+
+.button {
+  border-radius: 10px;
+  height: 5.5vh;
+  width: 20vw;
+  background-color: #272829;
+  color: white;
+  font-size: 16px;
+  font-family: "proxima-nova";
+}
+
+.button-close {
+  border-radius: 10px;
+  height: 5.5vh;
+  width: 7.5vw;
+  margin-left: -3vw;
+  background-color: #686969;
+  color: white;
+  font-size: 16px;
+  font-family: "proxima-nova";
+}

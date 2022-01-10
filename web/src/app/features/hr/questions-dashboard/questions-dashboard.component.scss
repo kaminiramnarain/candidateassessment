@@ -1,0 +1,204 @@
+.mat-table {
+    width: 100%;
+  }
+  
+  .title-text {
+    padding-left: 5px;
+    padding-bottom: 15px;
+  }
+  
+  .search-input {
+    width: 65%;
+  }
+
+  .skill-input {
+      width: 15%;
+  }
+
+  .level-input {
+      width: 15%;
+  }
+
+  .question-type-input {
+      width: 15%;
+  }
+
+  .pr-2 {
+      padding-right: 2vw;
+  }
+
+  .search-input-skill {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-inline-start: 1vw;
+    width: 30vw;
+  }
+
+  ::ng-deep .mat-select-panel{
+    overflow-x: hidden !important;
+ }
+  
+  .searchbar {
+  display: flex;
+  }
+  
+
+  th {
+    font-family: "proxima-nova-bold";
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .delete-icon {
+    color: red;
+  }
+  
+  .view-icon,
+  .edit-icon, .delete-icon {
+    padding-right: 1vw;
+  }
+  
+  .skill {
+    display: flex;
+  }
+  
+  .skill-container {
+    display: flex;
+  }
+  
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+  
+  .add-button {
+    background-color: #272829;
+    font-family: "proxima-nova";
+    margin-top: 7px;
+    font-size: 16px;
+    height: 45px;
+    width: 165px;
+    border-radius: 10px;
+  }
+
+  .pointer {
+    pointer-events: none;
+  }
+  
+  .reset-button {
+    background-color: #686868;
+    font-family: "proxima-nova";
+    padding-top: 3px;
+    margin-top: 5px;
+    margin-left: 2vw;
+    font-size: 16px;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    float: right;
+  }
+
+  .reset-icon {
+    padding-bottom: 3px;
+  }
+  
+  .heading-one-bold {
+    padding-top: 3vh;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card {
+    width: 92vw;
+    height: 80vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #e13616 !important;
+  }
+  
+  //mat-input focused color
+  
+  ::ng-deep
+    .mat-form-field-appearance-outline.mat-focused
+    .mat-form-field-outline-thick {
+    color: #e13616 !important;
+  }
+  
+  .search-icon {
+    padding-left: 5px;
+    color: #8b8b8b;
+  }
+  
+  .table-container {
+    height: 62vh;
+    overflow-y: auto;
+  }
+  
+  .mat-paginator-sticky {
+    bottom: 0;
+    position: sticky;
+    z-index: 10;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .question-column {
+      width: 37%;
+  }
+
+  .question-type-column {
+    width: 12%;
+  }
+
+  .skill-column {
+width: 12%;
+  }
+
+  .level-column {
+width: 12%;
+  }
+
+  .marks-column {
+    width: 7.5%;
+  }
+
+  .time-column {
+    width: 7.5%;
+  }
+
+  .actions-column {
+width: 12%;
+  }
+
+ 
+  .mat-cell {
+    font-family: 'proxima-nova';
+  }
+  

@@ -1,0 +1,334 @@
+.card {
+  width: 80vw;
+  height: 60vh;
+}
+
+.row {
+  display: flex;
+}
+
+.max-height {
+  height: 100%;
+}
+
+.column {
+  flex: 50%;
+  margin: auto;
+}
+
+.column-full-height {
+  flex: 50%;
+  height: 100%;
+  margin: auto;
+}
+
+.left-padding {
+  padding-left: 3vw;
+}
+
+.right-padding {
+  padding-right: 5vw;
+}
+
+.small-right-padding {
+  padding-right: 3vw;
+}
+
+.small-left-padding {
+  padding-left: 2vw;
+}
+
+.top-padding {
+  padding-top: 3vh;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-block {
+  display: block;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.float-header {
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vh;
+  font-size: 28px;
+  display: flex;
+}
+
+.mat-icon {
+  transform: scale(1.5);
+  margin-right: 1.5vw;
+  color: #e1462d;
+}
+
+.float-dropdown {
+  margin-top: 6vh;
+}
+
+mat-form-field {
+  width: 40%;
+}
+
+.added-skill-container {
+  max-width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.image {
+  width: 25vw;
+  margin-top: 4vh;
+}
+
+.text-center {
+  text-align: left;
+}
+
+.text-title {
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  font-size: 4vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+}
+
+.text-selected-skills {
+  padding-left: 10px;
+  margin-top: 1.2vh;
+  font-size: 3.5vh;
+  line-height: 40px;
+  font-family: "proxima-nova-thin";
+}
+
+.text-minimum-skills {
+  padding-left: 5px;
+  margin-top: 1.3vh;
+  font-size: 2.5vh;
+  line-height: 40px;
+  font-family: "proxima-nova-thin";
+}
+
+mat-slider {
+  width: 30%;
+  margin-left: 40px;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb {
+  background-color: #e1462d;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb-label {
+  background-color: #e1462d;
+}
+
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: #e1462d;
+}
+::ng-deep .mat-accent .mat-slider-min-value {
+  background-color: #e1462d;
+}
+
+:host ::ng-deep mat-slider.mat-slider.mat-slider-horizontal .mat-slider-ticks {
+  height: 20px;
+  opacity: 1;
+  background-size: 25% 2px !important;
+  transform: translateZ(0px) translateX(10.05051%);
+}
+
+.remaining-space {
+  flex: 1 1 auto;
+}
+
+.slider-space {
+  padding-left: 50px;
+  margin-right: -35px;
+}
+
+.box-with-slider {
+  height: 30px;
+  width: 100%;
+}
+
+.slider {
+  width: 230px;
+}
+
+.box {
+  font-family: "proxima-nova";
+  padding-left: 13px;
+}
+
+.box.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.chip {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chip .cdk-drop-list-dragging {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.skill-list {
+  height: 32vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.skill-list::-webkit-scrollbar {
+  display: none;
+}
+
+.skill-list-container {
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+  height: 35px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.input-container {
+  margin-bottom: -10px;
+}
+
+.input {
+  font-family: "proxima-nova";
+  font-size: 15px;
+  width: 100%;
+}
+
+.drag-drop-guide {
+  margin-top: 1.2vh;
+  margin-left: 5px;
+  font-size: 16px;
+  font-family: "proxima-nova";
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button {
+  background-color: #272829;
+  font-family: "proxima-nova";
+  margin-left: 1.5vw;
+  padding-top: 2px;
+  color: white;
+  font-size: 16px;
+  height: 46px;
+  width: 10px;
+  border-radius: 10px;
+}
+
+.button-clear {
+  background-color: red;
+  font-family: "proxima-nova";
+  margin-left: 1.5vw;
+  padding-top: 2px;
+  color: white;
+  font-size: 16px;
+  height: 46px;
+  width: 10px;
+  border-radius: 10px;
+}
+
+.continue-button {
+  background-color: #272829;
+  font-family: "proxima-nova";
+  margin-left: 1vw;
+  padding-top: 2px;
+  color: white;
+  font-size: 16px;
+  height: 46px;
+  width: 125px;
+  border-radius: 10px;
+}
+
+.reset-button {
+  background-color: red;
+  font-family: "proxima-nova";
+  margin-left: 1.5vw;
+  padding-left: 25px;
+  padding-top: 2px;
+  color: white;
+  font-size: 16px;
+  height: 46px;
+  width: 125px;
+  border-radius: 10px;
+}
+
+.button-container {
+  position: absolute;
+  right: 4.5vw;
+  bottom: 3vw;
+}
+
+.button-reset-icon {
+  transform: scale(1);
+  color: white;
+  padding-left: 10px;
+  padding-bottom: 2px;
+}
+
+.button-continue-icon {
+  transform: scale(1);
+  color: white;
+  padding-left: 3px;
+  padding-bottom: 2px;
+}
+
+.mat-chip-button-icon {
+  transform: scale(1.2);
+  color: #272829;
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+  position: fixed;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  margin-top: auto;
+  height: 30vh;
+  width: 5px;
+}
+
+.search-icon {
+  padding-left: 5px;
+  color: #8b8b8b;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #e13616 !important;
+}
+//mat-input focused color
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #e13616 !important;
+}

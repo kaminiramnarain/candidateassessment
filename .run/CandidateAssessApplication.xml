@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="candidateassessApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="candidateassess-rest" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ch.elca.candidateassess.candidateassessApplication" />
+    <option name="ACTIVE_PROFILES" value="dev" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,109 @@
+.card {
+  width: 80vw;
+  height: 60vh;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  margin: auto;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-height {
+  height: 100%;
+}
+
+.input {
+  font-family: "proxima-nova";
+}
+
+.input-headline {
+  font-family: "proxima-nova";
+}
+
+.input-field-container {
+  padding-top: 10px;
+  width: 20vw;
+}
+
+.button-container {
+  padding-top: 10px;
+}
+
+.image {
+  width: 25vw;
+  margin-top: 4vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-title {
+  margin-top: 1vh;
+  font-size: 3.25vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+}
+
+.text-subtitle {
+  font-size: 2.8vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+}
+
+.button {
+  border-radius: 10px;
+  height: 5.5vh;
+  width: 20vw;
+  background-color: #272829;
+  color: white;
+  font-size: 16px;
+  font-family: "proxima-nova";
+}
+
+.paragraph {
+  margin-top: 6vh;
+  text-align: justify;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.description {
+  line-height: 3vh;
+  font-size: 1.8vh;
+  font-family: "proxima-nova";
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  margin-top: auto;
+  height: 30vh;
+  width: 5px;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #e13616 !important;
+}
+//mat-input focused color
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #e13616 !important;
+}

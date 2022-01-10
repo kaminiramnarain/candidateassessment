@@ -1,0 +1,81 @@
+<mat-card class="card center">
+    <div class="heading-three">
+        <div class="left-container">
+            <mat-icon class="user">account_circle</mat-icon>
+            <div class="candidate-name">{{candidate.firstName}} {{candidate.lastName}} </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="candidate-email">{{candidate.emailAddress}}</div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="interview">{{interviewDateString}}</div>
+        </div>
+        <div class="right-container">
+            <mat-icon class="done">done</mat-icon>
+            <div class="flex-container">
+                <div class="marks-container">{{candidate.marks}} / {{candidate.questionnaire.marks}}</div>
+                <div class="heading-four label">marks</div>
+            </div>
+            <mat-icon class="clock">access_time</mat-icon>
+            <div class="flex-container">
+                <div class="time-container">{{timeTakenToCompleteQuestionnaire}} /
+                    {{candidate.questionnaire.totalTime/60}}
+                </div>
+                <div class="heading-four label">minutes</div>
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row">
+        <div class="heading-one-bold title-text">Review {{candidate.questionnaire.templateName}}</div>
+    </div>
+    <div class="questionnaire-container">
+        <form [formGroup]="reviewForm" class="input-form">
+            <div *ngFor="let data of questionnaireDataList; index as i" class="review-question-container">
+                <div class="question-container">
+                    <div class="question-title">
+                        <div class="heading-two question">Question {{data.questionNumber}} </div>
+                        <div class="heading-four">[{{data.question.marks}} marks]</div>
+                    </div>
+                    <div class="heading-four question-data" [innerHtml]="data.question.questionEnglish">
+
+                    </div>
+                </div>
+                <mat-divider vertical="true"></mat-divider>
+                <div class="answer-container">
+                    <div class="heading-two answer">Candidate Answer</div>
+                    <div class="answer-text-container">
+                        <div class="heading-four answer-data" [innerHtml]="data.textAnswer">
+                        </div>
+                        <div class="button-container">
+                            <button id="correct{{i}}" mat-flat-button class="button correct button-correct"
+                                (click)="OnCorrection(data, 'correct', i)" [disabled]="marked">
+                                <mat-icon>done</mat-icon>
+                            </button>
+                            <button id="incorrect{{i}}" mat-flat-button class="button wrong button-correct"
+                                (click)="OnCorrection(data, 'incorrect', i)" [disabled]="marked">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <mat-form-field class="comment-input" appearance="outline">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea formControlName="reviewComment" matInput placeholder="Leave a comment"
+                        [(ngModel)]="comment" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5"></textarea>
+                </mat-form-field>
+                <div>
+                    <button class="cancel-button" routerLink="/review-dashboard" mat-flat-button type="button"
+                        color="primary">Cancel</button>
+
+                    <button class="submit-button" mat-flat-button type="button" (click)="onSubmit()" color="primary"
+                        [disabled]="!reviewForm.valid">Submit</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</mat-card>

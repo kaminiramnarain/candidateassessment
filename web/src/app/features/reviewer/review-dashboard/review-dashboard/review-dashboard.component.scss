@@ -1,0 +1,129 @@
+.mat-table {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #e13616 !important;
+  }
+  
+  //mat-input focused color
+  
+  ::ng-deep
+    .mat-form-field-appearance-outline.mat-focused
+    .mat-form-field-outline-thick {
+    color: #e13616 !important;
+  }
+  
+  .search-icon {
+    padding-left: 5px;
+    color: #8b8b8b;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+  
+.heading-one-bold {
+    padding-top: 3vh;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.card {
+    width: 92vw;
+    height: 80vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  
+  .title-text {
+    padding-left: 5px;
+    padding-bottom: 15px;
+  }
+  
+  .search-input {
+    width: 100%;
+    margin-top: 1vh;
+  }
+  
+  .searchbar {
+    margin-bottom: -2vh;
+  }
+  
+  th {
+    font-family: "proxima-nova-bold";
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .table-container {
+    height: 62vh;
+    overflow-y: auto;
+  }
+
+  
+.mat-paginator-sticky {
+  bottom: 0;
+  position: sticky;
+  z-index: 10;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.mat-cell {
+  font-family: 'proxima-nova';
+}
+
+.name-column {
+ width: 15%;
+}
+
+.email-column {
+  width: 17%;
+}
+
+.date-column {
+  width: 15%;
+}
+
+.questionnaire-column {
+  width: 15%;
+}
+
+.time-column {
+  width: 15%;
+}
+
+.marks-column {
+  width: 15%;
+}
+
+
+.actions-column {
+  width: 10%;
+}

@@ -1,0 +1,64 @@
+.text-editor-container {
+    margin-top: 4vh;
+    height: 58vh;
+  }
+  
+  .section {
+    margin: 12px 0;
+  }
+
+  .label-text {
+    font-size: 18.0px;
+    font-family: 'proxima-nova-bold';
+    padding-bottom:2vh;
+  }
+
+  .answer-text {
+    font-size: 16.0px;
+    font-family: 'proxima-nova';
+    padding-left: 1.3vw;
+    padding-top: 1vh;
+    white-space: initial;
+    word-wrap: break-word;
+  }
+
+  .button-container {
+    padding-top: 3.3vh;
+  }
+
+  .button {
+    background-color: red;
+    font-family: "proxima-nova";
+    margin-left: 0.5vw;
+    padding-top: 2px;
+    color: white;
+    font-size: 14px;
+    height: 46px;
+    width: 100px;
+    border-radius: 10px;
+    float: right;
+  }
+  
+  .button-icon {
+    transform: scale(0.9);
+    color: white;
+    padding-left: 3px;
+    padding-bottom: 3px;
+  }
+
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #e13616!important;
+  }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #e13616;
+  }
+
+  ::ng-deep .custom-frame {
+    & .mat-checkbox-background, .mat-checkbox-frame {
+      width: 20px;
+      height: 20px;
+      border-radius: 30% !important;
+    }
+  }

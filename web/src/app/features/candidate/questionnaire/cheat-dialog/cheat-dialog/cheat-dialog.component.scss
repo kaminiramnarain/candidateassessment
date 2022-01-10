@@ -1,0 +1,75 @@
+.heading-four {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+
+  .heading-one-bold {
+    display: inline;
+    vertical-align: text-bottom;
+  }
+  
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1vh;
+  }
+  
+  .button {
+    border-radius: 10px;
+    height: 5.5vh;
+    width: 10vw;
+    background-color: #272829;
+    color: white;
+    font-size: 16px;
+    font-family: "proxima-nova";
+  }
+  
+  .mat-icon {
+    color: #e1462d;
+  }
+  
+  .close-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    float: right;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  .column {
+    flex: 50%;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .max-height {
+    height: 100%;
+  }
+  
+  .marks-image {
+    width: 20vw;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .container {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 3.5vw;
+  }
+  
+  .paragraph {
+    padding-top: 2vh;
+  }
+  

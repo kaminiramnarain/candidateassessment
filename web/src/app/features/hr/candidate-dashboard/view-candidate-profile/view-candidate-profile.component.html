@@ -1,0 +1,53 @@
+<mat-card class="card center">
+    <div class="container">
+        <div class="title-container">
+
+            <div class="heading-one-bold">View candidate</div>
+            <div class="heading-two name-text">({{candidate.firstName}} {{candidate.lastName}})</div>
+            <span class="spacer"></span>
+            <button mat-flat-button class="button center" routerLink="/candidate-dashboard" color="primary">
+                Close
+            </button>
+        </div>
+        <div class="details-container">
+            <div class="column-left">
+
+                <div class="first-name-container">
+                    <div class="heading-three-bold">First name:</div>
+                    <div class="heading-three first-name-text">{{candidate.firstName}}</div>
+                </div>
+
+                <div class="last-name-container">
+                    <div class="heading-three-bold">Last name:</div>
+                    <div class="heading-three last-name-text">{{candidate.lastName}}</div>
+                </div>
+
+                <div class="email-container">
+                    <div class="heading-three-bold">Email address: </div>
+                    <div class="heading-three email-text">{{candidate.emailAddress}}</div>
+                </div>
+
+                <div class="phone-container">
+                    <div class="heading-three-bold">Phone number: </div>
+                    <div class="heading-three phone-text">{{candidate.phoneNumber}}</div>
+                </div>
+
+                <div class="position-container">
+                    <div class="heading-three-bold">Position: </div>
+                    <div class="heading-three position-text">{{candidate.position.name}}</div>
+                </div>
+
+                <div class="reviewer-container">
+                    <div class="heading-three-bold">Reviewer assigned: </div>
+                    <div class="heading-three reviewer-text">{{candidate.reviewers[0].firstName}}
+                        {{candidate.reviewers[0].lastName}}</div>
+                </div>
+            </div>
+            <div class="column-right" *ngIf="showGraph(candidate.skills)">
+                <div class="heading-three-bold skills-title-text">Candidate skills</div>
+                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</mat-card>

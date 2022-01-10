@@ -1,0 +1,93 @@
+.card {
+    width: 92vw;
+    height: 78vh;
+    overflow-y: hidden;
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .row {
+      padding-left: 2vw;
+      padding-right: 2vw;
+      padding-top: 4vh;
+  }
+
+  .title-text {
+      padding-bottom: 4vh;
+  }
+
+  .group-form-container {
+      width: 100%;
+      height: 65vh;
+  }
+
+  .button-container {
+      position: absolute;
+      bottom: 46px;
+      right:3.2vw;
+  }
+
+  .expansion-panel-container{ 
+      overflow-y: auto;
+    width: 100%;
+    height: 56vh;
+    padding-right: 10px;
+  }
+
+  .save-button {
+    background-color: #272829;
+    font-family: "proxima-nova";
+    margin-left: 1vw;
+    padding-top: 2px;
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    width: 135px;
+    border-radius: 10px;
+  }
+  .add-button {
+    background-color: #272829;
+    font-family: "proxima-nova";
+    margin-left: 1vw;
+    padding-top: 2px;
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    width: 135px;
+    border-radius: 10px;
+  }
+  .cancel-button {
+    background-color: white;
+    border:solid 1px #272829;
+    font-family: "proxima-nova";
+    margin-left: 1vw;
+    padding-top: 2px;
+    color: black;
+    font-size: 16px;
+    height: 40px;
+    width: 110px;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+}
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  

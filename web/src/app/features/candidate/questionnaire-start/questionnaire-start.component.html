@@ -1,0 +1,27 @@
+<mat-card class="card center">
+    <div class="row max-height">
+        <div class="accent-border-left"></div>
+        <div class="column">
+            <img class="image center" src="../../../assets/images/questionnaire-start.svg" alt="test-invite" />
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="column">
+            <div class="heading-one-bold text-center text-title">
+                You're about to start your test
+            </div>
+            <div class="paragraph">
+                <div class="heading-four">
+                    Once you click the "Start" button, you cannot stop the flow of questions. Please note that cheating
+                    is not allowed. Our software detects cheating attemps and will report any attempts to the
+                    HR.<br><br>Good luck!
+                </div>
+            </div>
+            <div class="button-container">
+                <button mat-flat-button routerLink="/questionnaire/{{userQuestionnaireId}}" class="button center" color="primary">
+                    Start
+                </button>
+            </div>
+        </div>
+        <div class="accent-border-right"></div>
+    </div>
+</mat-card>

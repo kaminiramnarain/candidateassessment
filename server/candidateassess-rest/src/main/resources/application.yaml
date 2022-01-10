@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  profiles:
+    active: dev
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+keycloak:
+  auth-server-url: http://localhost:9005/auth
+  realm: elca
+  resource: client-project-template

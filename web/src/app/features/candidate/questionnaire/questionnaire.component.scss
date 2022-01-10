@@ -1,0 +1,146 @@
+.card {
+  width: 92vw;
+  height: 78vh;
+  overflow-y: hidden;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 3vh;
+  height: 75vh;
+  margin: auto;
+}
+
+.column-main {
+  flex: 50%;
+}
+
+.column-sub {
+  width: 26.25vw;
+}
+
+.question-icon {
+  transform: scale(1.25);
+  padding-bottom: 2vh;
+}
+
+.question {
+  max-height: 62vh;
+  padding-top: 3vh;
+  line-height: 22px;
+  text-align: justify;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.marks {
+  padding-top: 1vh;
+float: right;
+}
+
+.question::-webkit-scrollbar {
+  display: none;
+}
+
+.question-number {
+  padding-top: 2px;
+}
+
+.text-editor-container {
+  margin-top: 4vh;
+  height: 58vh;
+}
+
+.elapsed-time-text {
+  padding-top: 2px;
+}
+
+.time-text {
+  padding-top: 5px;
+}
+
+.button {
+  background-color: #272829;
+  font-family: "proxima-nova";
+  margin-left: 1vw;
+  padding-top: 2px;
+  color: white;
+  font-size: 16px;
+  height: 46px;
+  width: 175px;
+  border-radius: 10px;
+  position: absolute;
+  right: 3vw;
+  bottom: 4vh;
+}
+
+.button-icon {
+  transform: scale(1);
+  color: white;
+  padding-left: 5px;
+  padding-bottom: 2px;
+}
+
+.question-timer-container {
+  max-height: 55vh;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4vh;
+  margin-left: 0.4vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.question-timer-container::-webkit-scrollbar {
+  display: none;
+}
+
+.timer-container {
+  height: 13vh;
+  width: 100%;
+  padding-bottom: 3vh;
+}
+
+.mat-progress-spinner {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.question-number-text {
+  width: 100%; 
+  padding-bottom: 2vh;
+}
+
+.time-left-container {
+  display:inline-flex;
+}
+
+.time-left-text {
+  min-width: 8.5vw;
+  padding-top: 3vh;
+  font-size: 48.0px;
+}
+
+.mins-text {
+  padding-left: 0.5vw;
+  padding-top: 3.5vh;
+}
+
+.total-time-container {
+  padding-top: 2vh;
+}

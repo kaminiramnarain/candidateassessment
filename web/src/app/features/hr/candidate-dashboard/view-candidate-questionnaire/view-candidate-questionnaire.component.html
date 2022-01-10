@@ -1,0 +1,72 @@
+<mat-card class="card center">
+    <div class="heading-three-custom heading-three">
+        <div class="left-container">
+            <button mat-flat-button class="button center" routerLink="/candidate-dashboard" color="primary">
+                Close
+            </button>
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-icon class="user mt-1">account_circle</mat-icon>
+            <div class="candidate-name mt-1-5">{{questionnaire.firstName}} {{questionnaire.lastName}} </div>
+        </div>
+        <div class="right-container mt-1">
+            <mat-icon class="done">done</mat-icon>
+            <div class="marks-container">{{questionnaire.marksObtained}} / {{questionnaire.marks}}</div>
+            <div class="heading-four heading-four-custom text-margin-top">marks</div>
+            <mat-icon class="clock">access_time</mat-icon>
+            <div class="time-container">{{questionnaire.timeTaken}} / {{questionnaire.length / 60 }}
+            </div>
+            <div class="heading-four heading-four-custom text-margin-top">minutes</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="questionnaire-container">
+        <div class="single-question" *ngFor="let question of questionnaire.questions; last as isLast"
+            [ngStyle]="isLast ? {'border': ''} : {'border-bottom': 'dashed 2px #777777'}">
+            <div class="question-container">
+                <div class="question-number-text heading-three-bold">Question {{question.questionNumber}}</div>
+
+                <div class="row">
+                    <div class="column question-area">
+                        <div class="heading-three">Question:</div>
+                        <div class="heading-four question-text" [innerHtml]="question.question"></div>
+                    </div>
+
+                    <div class="column answer-area heading-three" *ngIf="isQuestionOpenEnded(question.questionType)">
+                        Candidate answer:
+                        <div [innerHtml]="question.answerText" class="answer-text">
+                        </div>
+                    </div>
+                    <div class="column answer-area" *ngIf="!isQuestionOpenEnded(question.questionType)">
+                        <div class="heading-three">Candidate answer:</div>
+                        <div *ngFor="let answer of question.answers" class="display-flex answer-text">
+                            <div class="answer-container heading-four"
+                                [ngStyle]="answer.selected ? {'background-color': '#cbfcc5', 'border': '1px solid green'} : {'background-color': 'white', 'border': '1px solid #272829'}">
+                                {{answer.answerEnglish}}</div>
+                            <div class="valid-icon-container"
+                                [ngStyle]="isCheckIcon(answer.valid, answer.selected) ? {'border': '3px solid green'} : {'border': '3px solid red'}">
+                                <mat-icon class="answer-check-icon center"
+                                    [ngStyle]="isCheckIcon(answer.valid, answer.selected) ? {'color': 'green'} : {'color': 'red'}">
+                                    {{ isCheckIcon(answer.valid, answer.selected) ? 'check' : 'clear'}}</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-detail-container row">
+                    <div class="column">
+                        <div class="heading-four">Question type: {{titleCase(question.questionType)}}</div>
+                        <div class="heading-four mt-1">Skill: {{question.skillName}} -
+                            {{titleCase(question.skillLevel)}}</div>
+                    </div>
+                    <div class="column pl-4">
+                        <div class="heading-four">Obtained marks: {{question.marksObtained}}</div>
+                        <div class="heading-four mt-1">Question marks: {{question.marks}}</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</mat-card>

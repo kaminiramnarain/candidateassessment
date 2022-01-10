@@ -1,0 +1,50 @@
+<!-- <mat-card class="card center">
+    <div class="row max-height">
+        <div class="accent-border-left"></div>
+
+        <div class="column">
+            <div class="heading-one-bold text-center">
+                Welcome !
+            </div>
+
+            <img class="image center" src="../../../assets/images/login.svg" alt="login" />
+        </div>
+
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div class="column">
+            <div class="text-center mb-4 heading-two-bold">
+                Login
+            </div>
+            <form [formGroup]="tokenForm">
+
+                <mat-form-field class="input-field-container center input" appearance="outline">
+                    <mat-label>Email address</mat-label>
+                    <input matInput formControlName="emailAddress" class="input" type="email" [(ngModel)]="emailAddress"
+                        required />
+                    <mat-error *ngIf="tokenForm.invalid">Invalid email address</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="input-field-container center input" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" class="input" [type]="showPassword ? 'text' : 'password'"
+                        [(ngModel)]="password" required />
+                    <mat-icon class="show-hide-icon" matSuffix (click)="showPassword = !showPassword">{{ showPassword ?
+                        'visibility_off' :
+                        'visibility'}}</mat-icon>
+                    <mat-error *ngIf="tokenForm.invalid">Invalid password</mat-error>
+                </mat-form-field>
+
+
+                <div class="button-container">
+                    <button mat-flat-button [disabled]="!tokenForm.valid" type="submit" (click)="onSubmit()"
+                        class="button center" color="primary">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="accent-border-right"></div>
+    </div>
+</mat-card> -->

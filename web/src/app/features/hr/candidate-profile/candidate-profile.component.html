@@ -1,0 +1,116 @@
+<div class="center">
+  <mat-card class="card center">
+    <div class="heading-one-bold">Candidate profile</div>
+    <form [formGroup]="candidateForm" class="input-form">
+      <div class="row">
+        <div class="column">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input formControlName="firstName" type="text" matInput [(ngModel)]="candidate.firstName"
+                placeholder="First Name" name="firstName" required />
+              <mat-error *ngIf="candidateForm.invalid">First name is invalid</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Email-Address</mat-label>
+              <input formControlName="emailAddress" [(ngModel)]="candidate.emailAddress" type="email" matInput
+                placeholder="Email-Address" name="emailAddress" required />
+              <mat-error *ngIf="candidateForm.invalid">Email-Address is invalid</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <!-- {{candidate.position.name}} -->
+            <mat-form-field appearance="outline">
+              <mat-label>Position</mat-label>
+              <mat-select (closed)="onClosePosition()" formControlName="position" [(ngModel)]="candidate.position" name="position" required>
+                <input class="search-input" (keyup)="positionOnKey($event)" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="searchValuePosition" matInput placeholder="Search a position">
+                <mat-option *ngFor="let position of allPositions" [value]="position">{{ position.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="candidateForm.invalid">Position is invalid</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="slider-container">
+            Questionnaire length:
+            <div class="minimum-time">30 min</div>
+            <mat-slider [(ngModel)]="questionnaireLength" [ngModelOptions]="{standalone: true}" class="slider"
+              thumbLabel step="30" min="30" max="120">
+            </mat-slider>
+            120 min
+          </div>
+
+          <div class="skill-checkbox">
+            <mat-checkbox [checked]="skillChecked" [(ngModel)]="skillChecked" [ngModelOptions]="{standalone: true}"
+              class="example-margin" labelPosition="before">Allow candidate to select skills</mat-checkbox>
+          </div>
+        </div>
+        <div class="column">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input formControlName="lastName" [(ngModel)]="candidate.lastName" type="text" matInput
+                placeholder="Last Name" name="lastName" required />
+              <mat-error *ngIf="candidateForm.invalid">Last name is invalid</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input formControlName="phoneNumber" [(ngModel)]="candidate.phoneNumber" type="text" matInput
+                placeholder="Phone Number" name="phoneNumber" required />
+              <mat-error *ngIf="candidateForm.invalid">Phone number is invalid</mat-error>
+            </mat-form-field>
+          </div>
+          <!-- <div *ngFor="let reviewer of candidate.reviewers"> {{reviewer.firstName}}</div> -->
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Reviewer</mat-label>
+              <mat-select (closed)="onCloseReviewer()"formControlName="reviewer" (selectionChange)="changeReviewer($event)"
+                [(ngModel)]="candidate.reviewers" name="reviewer" required>
+                <input class="search-input" (keyup)="reviewerOnKey($event)" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="searchValueReviewer" matInput placeholder="Search a reviewer">
+                <mat-option *ngFor="let reviewer of allReviewers" [value]="reviewer">{{reviewer.firstName+ " "+
+                  reviewer.lastName}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="candidateForm.invalid">Reviewer is invalid</mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Questionnaire name</mat-label>
+            <input formControlName="questionnaireName" type="text" matInput [(ngModel)]="questionnaireName"
+              placeholder="Questionnaire Name" name="questionnaireName" required />
+            <mat-error *ngIf="candidateForm.invalid">Questionnaire name is invalid</mat-error>
+          </mat-form-field>
+
+
+          <div *ngIf="!skillChecked" class="questionnaire-radio">
+            <mat-radio-group [ngModelOptions]="{standalone: true}" aria-label="Select an option">
+              <mat-radio-button name="questionnaireType0" ngDefaultControl [ngModelOptions]="{standalone: true}" [value]="0" [(ngModel)]="type" [checked]="true" class="first-radio">Auto Generate Questionnaire</mat-radio-button>
+              <mat-radio-button name="questionnaireType1"  ngDefaultControl [ngModelOptions]="{standalone: true}" [value]="1" [(ngModel)]="type">Customize Questionnaire</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div *ngIf="skillChecked"class="empty-container"></div>
+
+        </div>
+      </div>
+      <div class="button-container">
+
+        <button class="cancel-button" mat-flat-button routerLink="/candidate-dashboard" color="primary">Cancel</button>
+
+        <div *ngIf="skillChecked">
+          <button class="continue-button" type="submit" (click)="submitCandidateProfile(skillChecked)" mat-flat-button
+            color="primary" [disabled]="!candidateForm.valid">Submit</button>
+        </div>
+        <div *ngIf="!skillChecked">
+          <button class="continue-button" mat-flat-button type="button" (click)="submitCandidateProfile(skillChecked)"
+            color="primary" [disabled]="!candidateForm.valid">Continue</button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

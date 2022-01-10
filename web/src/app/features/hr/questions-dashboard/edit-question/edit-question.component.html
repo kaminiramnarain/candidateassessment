@@ -1,0 +1,24 @@
+<mat-card class="card center">
+    <div class="row">
+        <div class="display-flex">
+            <div class="heading-one-bold title-text">Edit question</div>
+            <div class="heading-three question-type-text">&nbsp;&nbsp;&nbsp;({{displayQuestionType}})</div>
+        </div>
+
+        <app-open-ended-question-edit *ngIf="checkQuestionType(QuestionTypeEnum.OPEN_ENDED)" [question]="question">
+        </app-open-ended-question-edit>
+
+        <app-multiple-choice-question-edit *ngIf="checkQuestionType(QuestionTypeEnum.MULTIPLE_CHOICE)"
+            [question]="question"></app-multiple-choice-question-edit>
+
+        <app-multiple-answers-question-edit *ngIf="checkQuestionType(QuestionTypeEnum.MULTIPLE_ANSWERS)"
+            [question]="question"></app-multiple-answers-question-edit>
+
+
+        <div class="button-container">
+            <button mat-flat-button color="primary" class="cancel-button" (click)="cancel()">Cancel</button>
+            <button mat-flat-button color="primary" class="save-button" (click)="submit()">Save</button>
+        </div>
+
+    </div>
+</mat-card>

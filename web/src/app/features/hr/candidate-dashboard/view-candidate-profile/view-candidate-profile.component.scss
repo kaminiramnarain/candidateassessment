@@ -1,0 +1,89 @@
+.card {
+    width: 92vw;
+    height: 78vh;
+    overflow-y: hidden;
+  }
+
+  .container {
+      padding-left: 2vw;
+      padding-right: 2vw;
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+  }
+
+  .title-container {
+      display: flex;
+  }
+
+  .name-text {
+      margin-left: 1vw;
+      padding-top: 2px;
+  }
+
+  .details-container {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      margin-top: 4vh;
+      height: 66vh;
+      width: 100%;
+      display: flex;
+  }
+
+  
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .column-left {
+    flex: 40%;
+    margin: auto;
+    height: 100%;
+  }
+
+  .column-right {
+    flex: 60%;
+    margin: auto;
+    height: 100%;
+  }
+
+  .spacer {
+      flex: 1 1 auto;
+  }
+
+  .button {
+    border-radius: 10px;
+    height: 5.5vh;
+    width: 5vw;
+    background-color: #272829;
+    color: white;
+    font-size: 16px;
+    font-family: "proxima-nova";
+    margin-right: 2vw;
+  }
+
+  .last-name-container, .email-container, .phone-container, .position-container, .reviewer-container {
+      margin-top: 4vh;
+  }
+
+  .first-name-text, .last-name-text, .email-text, .phone-text, .position-text, .reviewer-text {
+      margin-top: 1vh;
+  }
+
+  .skills-title-text {
+      margin-left: 10vw;
+  }
+  

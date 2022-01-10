@@ -1,0 +1,10 @@
+<div [ngStyle]="{
+    'background-color': questionNumber === selectedQuestion ? '#e13616' : isAnswered ? 'green' : '',
+    color: questionNumber === selectedQuestion || isAnswered ? 'white' : 'black',
+    border:
+      questionNumber === selectedQuestion
+        ? 'solid 1.5px #e13616'
+        : isAnswered ? 'solid 1.5px green' : 'solid 1.5px #272829'
+  }" class="question-number-container heading-three" (click)="changeQuestion()">
+  {{ questionNumber }}
+</div>

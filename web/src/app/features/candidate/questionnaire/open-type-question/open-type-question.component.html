@@ -1,0 +1,4 @@
+<div class="text-editor-container">
+    <quill-editor [(ngModel)]="question.answerText" placeholder="Type your answer here..." class="editor"
+        [modules]="quillConfig" (onEditorChanged)="onTyping($event)"></quill-editor>
+</div>

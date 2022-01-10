@@ -1,0 +1,48 @@
+<mat-card class="card center">
+  <div class="row max-height">
+    <div class="accent-border-left"></div>
+
+    <div class="column">
+      <div class="heading-one-bold text-center text-title">
+        Hi, you have been invited to take a test.
+      </div>
+
+      <img class="image center" src="../../../assets/images/test-invite.svg" alt="test-invite" />
+
+      <div class="paragraph">
+        <div class="heading-two description">
+          You must complete this test on your own. The number of questions
+          <strong>will vary</strong> in this test. The overall questionnaire
+          is timed. Input your questionnaire token and start the test whenever you are ready.
+        </div>
+      </div>
+    </div>
+
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <div class="column">
+      <div class="text-center text-subtitle">
+        Enter your questionnaire token
+      </div>
+      <form [formGroup]="tokenForm">
+
+        <mat-form-field class="input-field-container center input" appearance="outline">
+          <mat-label>Questionnaire token</mat-label>
+
+          <input matInput formControlName="candidateToken" class="input" type="text" [(ngModel)]="token" required />
+          <mat-error *ngIf="tokenForm.invalid">Token is invalid</mat-error>
+
+        </mat-form-field>
+
+        <div class="button-container">
+          <button mat-flat-button [disabled]="!tokenForm.valid" type="submit" (click)="onSubmit()" class="button center"
+            color="primary">
+            Continue
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="accent-border-right"></div>
+  </div>
+</mat-card>

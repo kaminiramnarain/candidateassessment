@@ -1,0 +1,63 @@
+<mat-card class="card center">
+    <div class="row max-height">
+        <div class="accent-border-left"></div>
+        <div class="column">
+            <img class="image center" src="../../../assets/images/invite-candidate.svg" alt="test-invite" />
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="column">
+            <div class="heading-one-bold">Invite candidate</div>
+            <form [formGroup]="inviteForm">
+                <div class="form-container">
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Candidate name</mat-label>
+                            <mat-select (closed)="onClose()" formControlName="name" [(ngModel)]="candidate" name="name" required>
+                                <input class="search-input" (keyup)="candidateOnKey($event)"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="searchValueCandidate" matInput
+                                    placeholder="Search a candidate">
+                                <mat-option *ngFor="let candidate of allCandidates" [value]="candidate">{{
+                                    candidate.firstName + " " +candidate.lastName }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="inviteForm.invalid">Candidate name is invalid</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Interview date</mat-label>
+                            <input matInput [min]="minDate" [matDatepicker]="picker" formControlName="date" matInput
+                                [(ngModel)]="interviewDate" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="inviteForm.invalid">Interview date is invalid</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Interview time</mat-label>
+                            <input [format]="24" matInput [ngxTimepicker]="timePicker" formControlName="time" readonly
+                                required>
+                            <ngx-material-timepicker-toggle matSuffix [for]="timePicker">
+                            </ngx-material-timepicker-toggle>
+                            <ngx-material-timepicker (timeSet)="onTimeSet($event)" #timePicker>
+                            </ngx-material-timepicker>
+                            <mat-error *ngIf="inviteForm.invalid">Interview time is invalid</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <div class="buttons">
+                        <button class="cancel-button" mat-flat-button routerLink="/candidate-dashboard"
+                            color="primary">Cancel</button>
+                        <button class="invite-button" type="submit" (click)="onSubmit()" mat-flat-button color="primary"
+                            [disabled]="!inviteForm.valid">Invite</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="accent-border-right"></div>
+    </div>
+</mat-card>

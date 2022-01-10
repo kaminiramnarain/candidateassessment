@@ -1,0 +1,90 @@
+<mat-card class="card">
+
+  <div class="header-container">
+
+    <div class="heading-one-bold title-text">Candidates</div>
+    <button routerLink="/candidate-profile" mat-flat-button class="add-button" color="primary">
+      <mat-icon class="add-icon">add</mat-icon>
+      Add candidate
+    </button>
+  </div>
+  <div class="searchbar">
+    <mat-form-field class="search-input" appearance="outline">
+      <mat-label>Search candidate</mat-label>
+      <span matPrefix>
+        <mat-icon class="search-icon" matPrefix>search</mat-icon>
+      </span>
+      <input [(ngModel)]="searchValue" (keyup)="onKey($event)" matInput placeholder="Filter by name" />
+      <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearchValue()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" class="mat-elevation-z2">
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell class="name-column" *matHeaderCellDef mat-sort-header
+          sortActionDescription="Sort by firstName">Candidate</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.firstName }} {{ element.lastName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="emailAddress">
+        <th mat-header-cell class="email-column" *matHeaderCellDef mat-sort-header
+          sortActionDescription="Sort by emailAddress">Email Address
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.emailAddress }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="position.name">
+        <th mat-header-cell class="position-column" *matHeaderCellDef mat-sort-header
+          sortActionDescription="Sort by position.name">Position
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.position.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="skill">
+        <th mat-header-cell class="skill-column" *matHeaderCellDef>Skills</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="skill-container">
+            <div class="skill" *ngFor="let skill of element.skills; let last = last">
+              {{ skill.name }}
+              <div *ngIf="!last">,&nbsp;&nbsp;</div>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell class="actions-column" *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button matTooltip="View candidate">
+            <mat-icon routerLink="/view-candidate-profile/{{element.id}}" aria-label="view icon" class="view" matSuffix>
+              remove_red_eye</mat-icon>
+          </button>
+          <button matTooltip="Edit candidate">
+            <mat-icon routerLink="/update-candidate-profile/{{element.id}}" aria-label="edit icon" class="edit"
+              matSuffix>edit</mat-icon>
+          </button>
+          <button matTooltip="View questionnaire" *ngIf="isQuestionnaireCompleted(element.questionnaireStatus)">
+            <mat-icon routerLink="/view-candidate-questionnaire/{{element.id}}" aria-label="edit icon"
+              class="questionnaire-icon" matSuffix>ballot
+            </mat-icon>
+          </button>
+          <button matTooltip="Delete candidate">
+            <mat-icon aria-label="delete icon" (click)="openDialog(element.id)" class="delete" matSuffix>delete
+            </mat-icon>
+          </button>
+
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator #paginator [length]="totalElements" [pageSize]="pageSize"
+      (page)="pageEvent = $event; changePageData($event)" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
+      class="mat-paginator-sticky">
+    </mat-paginator>
+  </div>
+
+</mat-card>

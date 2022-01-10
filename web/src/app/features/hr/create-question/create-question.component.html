@@ -1,0 +1,28 @@
+<mat-card class="card center">
+    <div class="row">
+        <div class="heading-one-bold title-text">Create question(s)</div>
+        <div class="group-form-container">
+            <div class="expansion-panel-container">
+                <mat-accordion multi>
+                    <app-question-form *ngFor="let question of questions; last as isLast; let index = index;"
+                        [expanded]="isLast" [question]=" question"
+                        [hasDeleteButton]="questions.length == 1 ? false : true" [questionNumber]="index + 1"
+                        (onRemoveQuestionEmitter)="removeQuestion($event)">
+                    </app-question-form>
+                </mat-accordion>
+
+            </div>
+
+
+            <div class="button-container">
+                <button mat-flat-button color="primary" class="cancel-button" (click)="cancel()">Cancel</button>
+                <button mat-flat-button color="primary" class="add-button" (click)="addQuestion()">Add question</button>
+                <button mat-flat-button color="primary" class="save-button" [disabled]="isSubmitButtonDisabled"
+                    (click)="submit()">Save</button>
+            </div>
+
+
+
+        </div>
+    </div>
+</mat-card>

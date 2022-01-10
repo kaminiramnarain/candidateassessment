@@ -1,0 +1,62 @@
+<div class="main-container">
+    <div class="display-flex">
+        <div class="heading-one-bold title">View a question</div>
+        <span class="spacer"></span>
+        <button mat-dialog-close mat-icon-button aria-label="close button">
+            <mat-icon class="close-icon">close</mat-icon>
+        </button>
+    </div>
+
+    <div class="scrollable">
+        <div class="row">
+            <div class="column-left">
+                <div class="heading-three-bold question-title-text">Question:</div>
+                <div class="heading-three question-text" [innerHtml]="data.questionEnglish"></div>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="column-right">
+                <div class="display-flex pb-2">
+                    <div class="heading-three-bold">Question type:</div>
+                    <div class="heading-three">&nbsp;{{displayQuestionType}}</div>
+                </div>
+                <div class="display-flex pb-2">
+                    <div class="heading-three-bold">Skill:</div>
+                    <div class="heading-three">&nbsp;{{data.skill.name}}</div>
+                </div>
+                <div class="display-flex pb-2">
+                    <div class="heading-three-bold">Level:</div>
+                    <div class="heading-three">&nbsp;{{displayLevel}}</div>
+                </div>
+                <div class="display-flex pb-2">
+                    <div class="heading-three-bold">Mark(s):</div>
+                    <div class="heading-three">&nbsp;{{data.marks}}</div>
+                </div>
+                <div class="display-flex pb-2">
+                    <div class="heading-three-bold">Time:</div>
+                    <div class="heading-three">&nbsp;{{data.time}}&nbsp;seconds</div>
+                </div>
+            </div>
+        </div>
+        <div class="answer-container" *ngIf="showAnswerSection">
+            <div class="heading-two-bold">Answers</div>
+            <div class="single-answer-container" *ngFor="let answer of data.answers"
+                [ngStyle]="answer.valid ? {'background-color': '#cbfcc5','border-right': 'solid 1px green','border-top': 'solid 1px green','border-bottom': 'solid 1px green'} : {'background-color': 'white', 'border': 'solid 1px #272829'}">
+                <div class="answer-icon-container"
+                    [ngStyle]="answer.valid ? {'background-color': 'green', 'border-right': 'solid 1px green'} : {'background-color': 'white', 'border-right': 'solid 1px #272829'}">
+                    <mat-icon class="answer-icon center" [ngStyle]="{'color': answer.valid ? 'white' : 'red'}">
+                        {{answer.valid ? 'check' :
+                        'close'}}</mat-icon>
+                </div>
+                <div class="heading-four answer-text">{{answer.answerEnglish}}</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <span class=" spacer"></span>
+    <div class="button-container">
+        <button mat-flat-button mat-dialog-close class="close-button">Close</button>
+
+    </div>
+</div>

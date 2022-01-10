@@ -1,0 +1,926 @@
+{
+	"info": {
+		"_postman_id": "4933a481-d787-45f9-b49b-284e0a52dad8",
+		"name": "Candidate Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Questionnaire",
+			"item": [
+				{
+					"name": "Create Questionnaire",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"templateName\": \"Java questionnaire\",\r\n    \"marks\": 100,\r\n    \"totalTime\": 3600\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/questionnaires/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"questionnaires",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Questionnaire",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/questionnaires/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"questionnaires",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Question",
+			"item": [
+				{
+					"name": "Create Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"questionEnglish\": \"english question\",\r\n    \"questionFrench\": \"french question\",\r\n    \"image\": \"edfghkj\",\r\n    \"questionStatus\": \"VALID\",\r\n    \"type\": \"OPEN_ENDED\",\r\n    \"marks\": 10,\r\n    \"timeAssignedForQuestion\": 10,\r\n    \"skillId\": \"e013237c-11a8-4087-a6b2-71ffb8070a40\",\r\n    \"skillLevel\": \"EXPERT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/questions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"questions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/questions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"questions",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Position",
+			"item": [
+				{
+					"name": "Get Positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/positions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"positions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Back end engineer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/positions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"positions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search position",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/positions/search?positionName=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"positions",
+								"search"
+							],
+							"query": [
+								{
+									"key": "positionName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skill",
+			"item": [
+				{
+					"name": "Create Skill",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"C++\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/skills/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"skills",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Skills (From OWS/ZAF)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://10.9.0.46:8080/api/skills/?sortOrder=ASC&sortBy=name&pageNumber=1&pageSize=3",
+							"protocol": "http",
+							"host": [
+								"10",
+								"9",
+								"0",
+								"46"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"skills",
+								""
+							],
+							"query": [
+								{
+									"key": "sortOrder",
+									"value": "ASC"
+								},
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/skills/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"skills",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "answer",
+			"item": [
+				{
+					"name": "Create answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answerEnglish\": \"answer english\",\r\n    \"answerFrench\": \"answer French\",\r\n    \"valid\": true,\r\n    \"questionId\": \"07c4a24a-5f4a-4dcc-9985-704d1f739383\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/answers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"answers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get answer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/answers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"answers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"NEW\",\r\n    \"userQuestionnaireId\": \"9f3307bf-0b9d-4cb6-a540-d58bea3385d0\",\r\n    \"personIds\": [\"74cb4f60-0327-4b36-b70b-0c0c6b784938\", \"4cf73709-588f-4969-b6e9-f6b9bd44f1ba\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Questionnaire",
+			"item": [
+				{
+					"name": "Create user questionnaire",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"zaffar\",\r\n    \"lastName\": \"fakeer\",\r\n    \"phoneNumber\": \"12345678\",\r\n    \"emailAddress\": \"farhaan@gmail.com\",\r\n    \"remainingTime\": 1000,\r\n    \"status\": \"PENDING\",\r\n    \"questionnaireId\": \"4af1f86d-f575-49b1-b655-e59427a00adb\",\r\n    \"positionId\": \"1b968583-057f-455d-87e5-e6f6af3c9517\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user-questionnaires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user-questionnaires"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user questionnaire",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"zaffar ali\",\r\n    \"lastName\": \"fakeer mohamed\",\r\n    \"phoneNumber\": \"87654321\",\r\n    \"emailAddress\": \"zaffarali@gmail.com\",\r\n    \"positionId\": \"c520dc67-cb29-4e8e-b18b-3879be9632e4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user-questionnaires/update/782200df-fe9d-4123-8eb8-c705ccbfd659",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user-questionnaires",
+								"update",
+								"782200df-fe9d-4123-8eb8-c705ccbfd659"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invite candidate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"5e6e9470-284d-4613-bf74-933d45b3ba53\",\r\n    \"interviewDate\": \"2018-02-05T12:59:11.332\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user-questionnaires/inviteCandidate/5e6e9470-284d-4613-bf74-933d45b3ba53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user-questionnaires",
+								"inviteCandidate",
+								"5e6e9470-284d-4613-bf74-933d45b3ba53"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidate Answer",
+			"item": [
+				{
+					"name": "Create candidate answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"textAnswer\": \"asdf\",\r\n    \"valid\": false,\r\n    \"userQuestionnaireId\": \"0405f6aa-dddb-42d3-932c-eff06c0944e9\",\r\n    \"questionId\": \"07c4a24a-5f4a-4dcc-9985-704d1f739383\",\r\n    \"answerId\": \"\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/candidate-answers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidate-answers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get candidate answer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidate-answers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidate-answers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Questionnaire Skill",
+			"item": [
+				{
+					"name": "Get user questionnaire skill",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user-questionnaire-skills/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user-questionnaire-skills",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user create skill",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userQuestionnaireId\": \"0405f6aa-dddb-42d3-932c-eff06c0944e9\",\r\n    \"skills\": [{\r\n        \"id\": \"e013237c-11a8-4087-a6b2-71ffb8070a40\",\r\n        \"name\": \"CSS\",\r\n        \"level\": \"NOVICE\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user-questionnaire-skills/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user-questionnaire-skills",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Questionnaire Question",
+			"item": [
+				{
+					"name": "Get questionnaire question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/questionnaire-questions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"questionnaire-questions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create questionnaire question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"questionId\": \"2220036b-0dd6-40a0-a766-03721ab97d0d\",\r\n    \"questionnaireId\": \"ce9cb73e-bc43-42f1-8766-ecc2c562ae99\",\r\n    \"questionNumber\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/questionnaire-questions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"questionnaire-questions",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "Create person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"anoop\",\r\n    \"lastName\": \"sohun\",\r\n    \"phoneNumber\": \"12345678\",\r\n    \"emailAddress\": \"sohun@gmail.com\",\r\n    \"accountType\": \"REVIEWER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/persons/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reviewer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/reviewers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"reviewers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search reviewer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/reviewers/search?reviewerName=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"reviewers",
+								"search"
+							],
+							"query": [
+								{
+									"key": "reviewerName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidates",
+			"item": [
+				{
+					"name": "Get candidates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidates/?sortOrder=ASC&sortBy=firstName&pageNumber=0&pageSize=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidates",
+								""
+							],
+							"query": [
+								{
+									"key": "sortOrder",
+									"value": "ASC"
+								},
+								{
+									"key": "sortBy",
+									"value": "firstName"
+								},
+								{
+									"key": "pageNumber",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark as archived",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidates/archive/ac4a0f7a-4492-45b8-8432-9d2b7102fba8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidates",
+								"archive",
+								"ac4a0f7a-4492-45b8-8432-9d2b7102fba8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidates/search?candidateName=za&sortOrder=DESC&sortBy=firstName&pageNumber=0&pageSize=7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidates",
+								"search"
+							],
+							"query": [
+								{
+									"key": "candidateName",
+									"value": "za"
+								},
+								{
+									"key": "sortOrder",
+									"value": "DESC"
+								},
+								{
+									"key": "sortBy",
+									"value": "firstName"
+								},
+								{
+									"key": "pageNumber",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get candidate by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidates/0405f6aa-dddb-42d3-932c-eff06c0944e9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidates",
+								"0405f6aa-dddb-42d3-932c-eff06c0944e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get candidates with no interview date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidates/noInterviewDate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidates",
+								"noInterviewDate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search candidates with no interview date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/candidates/noInterviewDate/search?candidateName=b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"candidates",
+								"noInterviewDate",
+								"search"
+							],
+							"query": [
+								{
+									"key": "candidateName",
+									"value": "b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

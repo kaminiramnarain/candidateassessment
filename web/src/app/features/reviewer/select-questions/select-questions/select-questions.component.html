@@ -1,0 +1,218 @@
+<div class="card-container">
+    <mat-card class="left-card">
+        <div class="heading-three">
+            <div class="first-container">
+                <mat-icon class="user">account_circle</mat-icon>
+                <div class="candidate-name">{{candidate.firstName +" " +candidate.lastName }}</div>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="second-container">
+                <mat-icon class="position">work_outline</mat-icon>
+                <div class="position-name">{{candidate.position.name}}</div>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="third-container">
+                <mat-icon class="skill">school</mat-icon>
+                <div class="skill-container">
+                    <div *ngFor="let skill of candidate.skills" class="second-skill-container">
+                        <div class="skill-name">{{skill.name}}</div>
+                        <div class="heading-five-thin skill-level">{{skill.level}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="heading-one-bold title">Pool of question</div>
+        <div class="searchbar">
+            <mat-form-field class="search-input pr-2" appearance="outline">
+                <mat-label>Search question</mat-label>
+                <span matPrefix>
+                    <mat-icon class="search-icon" matPrefix>search</mat-icon>
+                </span>
+                <input [(ngModel)]="searchEventValue" (keyup)="onKey($event)" matInput
+                    placeholder="Filter by question content" />
+                <button *ngIf="searchEventValue" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="resetSearchValue()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="question-type-input pr-2">
+                <mat-label>Question type</mat-label>
+                <mat-select [(ngModel)]="selectedQuestionType" name="questionType"
+                    (selectionChange)="selectionChanged('questionType', $event)">
+                    <mat-option class="dropdown" *ngFor="let questionType of questionTypeList" [value]="questionType">
+                        {{questionType}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="skill-input pr-2">
+                <mat-label>Skill</mat-label>
+                <mat-select (closed)="onClose()" [(ngModel)]="selectedSkillId" name="skill"
+                    (selectionChange)="selectionChanged('skill', $event)">
+                    <input class="search-input-skill dropdown" (keyup)="skillOnKey($event)"
+                        [(ngModel)]="searchValueSkill" matInput placeholder="Search for skill">
+                    <mat-option class="dropdown" *ngFor="let skill of skillList" [value]="skill.id">{{skill.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="level-input">
+                <mat-label>Level</mat-label>
+                <mat-select [(ngModel)]="selectedSkillLevel" name="level"
+                    (selectionChange)="selectionChanged('level', $event)">
+                    <mat-option class="dropdown" *ngFor="let skillLevel of skillLevelList" [value]="skillLevel">
+                        {{skillLevel}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-flat-button class="reset-button" color="primary" (click)="resetSearchFields()">
+                <mat-icon class="reset-icon">clear</mat-icon>
+            </button>
+        </div>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
+                class="mat-elevation-z2">
+
+                <ng-container matColumnDef="questionEnglish">
+                    <th class="question-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by question">
+                        Question</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="pointer" [innerHtml]="element.questionEnglish | noSanitize"></div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="skill">
+                    <th class="skill-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by skill">
+                        Skill</th>
+                    <td mat-cell *matCellDef="let element">{{ element.skill.name }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="level">
+                    <th class="level-column" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by level">
+                        Level</th>
+                    <td mat-cell *matCellDef="let element">{{ convertTextToReadable(element.level) }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th class="actions-column" mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button matTooltip="View question">
+                            <mat-icon (click)="viewQuestion(element)" aria-label="view icon" class="view-icon"
+                                matSuffix>
+                                remove_red_eye</mat-icon>
+                        </button>
+                        <button matTooltip="Add to questionnaire">
+                            <mat-icon (click)="addToQuestionnaire(element)" aria-label="add icon" class="add-icon"
+                                matSuffix>
+                                add</mat-icon>
+                        </button>
+
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator #paginator [length]="totalElements" [pageSize]="pageSize"
+                (page)="pageEvent = $event; changePageData($event)" [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page" class="mat-paginator-sticky">
+            </mat-paginator>
+        </div>
+
+
+    </mat-card>
+    <mat-card class="right-card">
+        <div class="detail-container">
+        <div class="first-container">
+            <mat-icon class="assignment">assignment</mat-icon>
+            <div class="heading-one-bold questionnaire">Questionnaire</div>
+        </div>
+        <div class="right-container">
+            <mat-icon class="done">done</mat-icon>
+            <div class="flex-container">
+                <div class="marks-container">{{totalMarks}}</div>
+                <div class="heading-four">marks</div>
+            </div>
+            <mat-icon class="clock">access_time</mat-icon>
+            <div class="flex-container">
+                <div class="time-container">{{timeToCompleteQuestionnaire}}
+                </div>
+                <div class="heading-four">minutes</div>
+            </div>
+        </div>
+    </div>
+        <mat-divider></mat-divider>
+   
+            <div class="questions-container">
+                <div *ngFor="let question of selectedQuestions" class="question-container">
+                    <div class="separator">
+                    <div class="question-english" [innerHtml]="question.questionEnglish">
+                    </div>
+                    <div class="details">
+                        <div class="question-type-container">
+                            <div class="question-type-title">
+                                Question type: 
+                            </div>
+                            <div class="question-type">
+                                {{ convertTextToReadable(question.questionType) }}
+                            </div>
+                        </div>
+                        <div class="question-skill-container">
+                            <div class="question-skill-title">
+                                Skill: 
+                            </div>
+                            <div class="question-type">
+                                {{question.skill.name}}
+                            </div>
+                        </div>
+                        <div class="question-level-container">
+                            <div class="question-level-title">
+                                Level: 
+                            </div>
+                            <div class="question-level">
+                                {{ convertTextToReadable(question.level) }}
+                            </div>
+                        </div>
+                        <div class="question-marks-container">
+                            <div class="question-marks-title">
+                                Mark(s): 
+                            </div>
+                            <div class="question-marks">
+                                {{question.marks}}
+                            </div>
+                        </div>
+                        <div class="question-time-container">
+                            <div class="question-time-title">
+                                Time: 
+                            </div>
+                            <div class="question-time">
+                                {{question.time}} seconds
+                            </div>
+                        </div>
+
+                    </div>
+                    <button matTooltip="Remove from questionnaire">
+                    <mat-icon (click)="removeFromQuestionnaire(question)" aria-label="remove icon" class="remove-icon"
+                    matSuffix>
+                    close</mat-icon>
+                </button>
+
+                </div>
+
+
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="cancel-button" mat-flat-button routerLink="/candidate-dashboard"
+                    color="primary">Cancel</button>
+                <button class="create-button" type="submit" (click)="onSubmit()" mat-flat-button color="primary"
+                    [disabled]="!disabled" >Create Questionnaire</button>
+            </div>
+  
+    </mat-card>
+</div>

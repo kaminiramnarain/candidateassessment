@@ -1,0 +1,25 @@
+<div class="row max-height">
+    <div class="column">
+      <img class="marks-image center max-height" src="../../../assets/images/cheat.svg"
+        alt="center test-completed-image" />
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="column container">
+      <div class="heading-one-bold" mat-dialog-title>Warning</div>
+      <div mat-dialog-content>
+        <div *ngIf="!disqualify" class="heading-four paragraph">
+          You have been caught cheating. This is your {{data.cheat}}{{ranking}} warning. You are strongly advised to remain on this tab!
+        </div>
+        <div *ngIf="disqualify" class="heading-four paragraph">
+            Your interview test has been disqualified!
+        </div>
+      </div>
+      <div mat-dialog-actions>
+        <div class="button-container">
+          <button class="button" mat-flat-button mat-dialog-close>
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

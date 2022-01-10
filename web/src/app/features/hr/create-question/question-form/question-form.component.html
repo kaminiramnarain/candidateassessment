@@ -1,0 +1,34 @@
+<div class="question-form">
+    <mat-expansion-panel class="mat-elevation-z0 expansion-panel" [expanded]="expanded">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <div class="heading-three-bold">New question {{questionNumber}}</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="question-type-container">
+            <div class="heading-four">Question type:</div>
+            <mat-radio-group [(ngModel)]="selectedQuestionType">
+                <mat-radio-button class=" radio-button" *ngFor="let questionType of questionTypes"
+                    [value]="questionType">
+                    {{questionType}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <span class="spacer"></span>
+            <button *ngIf="hasDeleteButton" color="primary" mat-flat-button class="delete-button"
+                (click)="removeQuestion()">Remove</button>
+        </div>
+
+        <app-open-ended-question-create *ngIf="checkQuestionType(QuestionTypeEnum.OPEN_ENDED)" [question]="question">
+        </app-open-ended-question-create>
+
+        <app-multiple-choice-question-create *ngIf="checkQuestionType(QuestionTypeEnum.MULTIPLE_CHOICE)"
+            [question]="question"></app-multiple-choice-question-create>
+
+        <app-multiple-answers-question-create *ngIf="checkQuestionType(QuestionTypeEnum.MULTIPLE_ANSWERS)"
+            [question]="question"></app-multiple-answers-question-create>
+
+
+    </mat-expansion-panel>
+
+</div>
