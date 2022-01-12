@@ -6,7 +6,5 @@ spring:
   mail:
     host: localhost
     port: 1025
-#    username: elcaassessment@gmail.com
-#    password: ElcaInformationTechnology
 #    properties.mail.smtp.auth: true
 #    properties.mail.smtp.starttls.enable: true
